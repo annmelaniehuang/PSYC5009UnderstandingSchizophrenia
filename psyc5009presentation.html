@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Understanding Schizophrenia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #6200ea;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background: #3700b3;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-around;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      padding: 2rem;
+      display: none;
+    }
+    section.active {
+      display: flex;
+    }
+    footer {
+      background: #6200ea;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    h2 {
+      color: #3700b3;
+    }
+
+    #background {
+      position: relative;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #background > div {
+      max-width: 800px; /* Limit the width for a blog post style */
+      width: 100%;
+      padding: 0 20px; /* Add some horizontal padding within the centered container */
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 30px; /* Increased padding to accommodate the dot and some space */
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 10px; /* Adjusted left position for the line */
+      width: 2px;
+      background-color:  #3700b3; /* The vertical line */
+    }
+    .timeline-event {
+      padding: 10px 0;
+      position: relative;
+      padding-left: 15px; /* Add left padding for the text */
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    .timeline-event strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .timeline-event img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 5px; /* Optional: Rounded corners for images */
+    }
+
+    .timeline-event::before {
+      content: '';
+      position: absolute;
+      top: 10px; /* Adjust vertical alignment of the circle */
+      left: -4px; /* Adjust horizontal position to align with the line */
+      width: 12px;
+      height: 12px;
+      background-color: #3700b3; /* Changed the dot color */
+      border: 2px solid #aaa;
+      border-radius: 50%;
+      z-index: 1; /* Ensure circle is above the line */
+    }
+
+    /* Style for the fade effect containers */
+    #background > div > * {
+      opacity: 1;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .fade-out-top {
+      opacity: 0.5 !important;
+    }
+
+    .fade-out-bottom {
+      opacity: 0.5 !important;
+    }
+
+    .etiology-overlap {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin: 20px auto;
+    }
+
+    .factor {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      opacity: 0.7;
+      transition: opacity 0.3s ease-in-out;
+      text-align: center;
+      padding: 15px;
+      box-sizing: border-box;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+
+    .factor:hover {
+      opacity: 1;
+      z-index: 10;
+    }
+
+    .biological {
+      background-color: #4CAF50;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    .genetic {
+      background-color: #2196F3;
+      top: 50%;
+      left: 50%;
+      transform: translate(30%, -50%);
+      z-index: 2;
+    }
+
+    .psychological {
+      background-color: #FF9800;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 20%);
+      z-index: 3;
+    }
+
+    .environmental {
+      background-color: #9C27B0;
+      top: 50%;
+      left: 50%;
+      transform: translate(20%, 20%);
+      z-index: 4;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .content-column {
+      flex: 60%;
+      padding-right: 20px;
+    }
+    .agenda-column {
+      flex: 40%;
+      padding-left: 20px;
+      border-left: 2px solid #3700b3;
+    }
+    .agenda-column h2 {
+      color: #3700b3;
+      margin-top: 0;
+    }
+    .agenda-column ul {
+      line-height: 2.0;
+      font-size: 1.1em;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<body>
+  <header>
+    <h1>Understanding Schizophrenia</h1>
+    <p>Presented by Anran HUANG (Ann)</p>
+  </header>
+
+  <nav>
+    <a href="#" onclick="showSection('intro')">Introduction</a>
+    <a href="#" onclick="showSection('background')">Background</a>
+    <a href="#" onclick="showSection('diagnosis')">Diagnosis</a>
+    <a href="#" onclick="showSection('treatment')">Treatment</a>
+    <a href="#" onclick="showSection('conclusion')">Conclusion</a>
+  </nav>
+
+  <section id="intro" class="active">
+    <div class="content-column">
+      <h2>Schizophrenia</h2>
+      <p>A serious and complex mental health disorder that affects perception, thinking, and behavior.</p>
+      <img src="https://www.shutterstock.com/image-vector/paranoia-schizophrenia-mental-illness-abstract-260nw-2447194753.jpg" alt="Understanding Schizophrenia" style="max-width: 100%; height: auto; margin: 20px 0;">
+    </div>
+    <div class="agenda-column">
+      <h2>Agenda</h2>
+      <ul>
+        <li>Background</li>
+        <li>Diagnostic Criteria</li>
+        <li>Treatment</li>
+        <li>Conclusion</li>
+      </ul>
+    </div>
+
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('prevalenceChart').getContext('2d');
+    const prevalenceChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Worldwide', 'Adults (Worldwide)', 'Australia'],
+        datasets: [{
+          label: 'Prevalence (%)',
+          data: [0.32, 0.45, 0.24], // Converted Australia's rate to percentage
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)'
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)'
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Percentage (%)'
+            }
+          }
+        },
+        plugins: {
+          title: {
+            display: true,
+            text: 'Prevalence of Schizophrenia',
+            padding: {
+              bottom: 10
+            }
+          },
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+  });
+</script>
+
+<section id="background" style="padding: 20px; display: flex; flex-direction: column; align-items: center;">
+  <div style="max-width: 800px; width: 100%;">
+
+    <h2>Prevalence and Demographics</h2>
+    <p>Schizophrenia affects about 0.3%–0.7% of the population worldwide. The disorder typically manifests in late adolescence or early adulthood, with slightly higher rates in urban areas and among certain demographic groups.</p>
+    <canvas id="prevalenceChart" width="400" height="300"></canvas>
+    <p style="font-size: 0.9em; color: #777;">Source: [Insert your source here]</p>
+  </div>
+
+  <div>
+    <h2>History and Evolving Understanding</h2>
+    <p>Schizophrenia has been documented for centuries under different names. Key figures such as Emil Kraepelin and Eugen Bleuler laid the foundation for what we know today.</p>
+    <div class="timeline">
+      <div class="timeline-event">
+        <strong>Late 19th Century:</strong> 
+        <p>Early recognition of schizophrenia as a distinct illness.</p>
+        <img src="https://www.nlm.nih.gov/hmd/topics/diseases-of-mind/images/chainedtowall_101436547.jpg" alt="History" style="max-width: 180px; height: auto; margin-top: 5px;">
+      </div>
+      <div class="timeline-event">
+        <strong>1896:</strong> <p>Emil Kraepelin classifies "dementia praecox."</p>
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQz3eIldZ9Mp4fr5BWaMYnW4S0N2Ag7hdOqIEIYeC6HrV6Eb86Q9zEFcNlA8boMX9psVp3EviFgzof8kRfBc_HDRA" alt="Emil Kraepelin" style="max-width: 180px; height: auto; margin-top: 5px;">
+      </div>
+      <div class="timeline-event">
+        <strong>1908:</strong> <p>Eugen Bleuler coins the term "schizophrenia."</p>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfPtg-3t12Edl-yg8GgKOd1p49rB6PcsS3l60QKEIZyAWwrdn61cG_k3xBGOus52aoFKt3U0MDfLLxPVbeGtSe2w" alt="Eugen Bleuler" style="max-width: 180px; height: auto; margin-top: 5px;">
+      </div>
+      <div class="timeline-event">
+        <strong>Early-mid 1900s:</strong> <p>Lifetime confinement in asylums was common.</p>
+        <img src="https://media.npr.org/assets/img/2024/04/14/allison-building-sleeping-porch--1400x1128-b1d0729e4c749132347b4c87551adecc876b555c.jpg?s=1100&c=50&f=jpeg" alt="Asylum" style="max-width: 600px; height: auto; margin-top: 5px;">
+      </div>
+      <div class="timeline-event">
+        <strong>1950s:</strong> <p>Discovery of first antipsychotic medication (Chlorpromazine).</p>
+        <img src="https://www.bap.org.uk/articles/wp-content/uploads/2016/10/publicinfo_chlorpromazine3.gif" alt="Chlorpromazine" style="max-width: 600px; height: auto; margin-top: 5px;">
+      </div>
+      <div class="timeline-event">
+        <strong>Late 20th Century:</strong> <p>Shift to de-institutionalization and community care.</p>
+        <img src="https://images.everydayhealth.com/images/emotional-health/schizophrenia/who-should-be-on-your-schizophrenia-care-team-alt-1440x810.jpg?sfvrsn=e38692db_5" alt="Community" style="max-width: 600px; height: auto; margin-top: 5px;">
+      </div>
+      <div class="timeline-event">
+        <strong>Late 20th/Early 21st Century:</strong> <p>Advances in neuroscience, understanding complex factors.</p>
+        <img src="https://images.newscientist.com/wp-content/uploads/2021/11/16123327/pri210550131.jpg" alt="Brain" style="max-width: 600px; height: auto; margin-top: 5px;">
+      </div>
+      <div class="timeline-event">
+        <strong>Today:</strong> <p>Schizophrenia understood as a complex, multifactorial spectrum.</p>
+        <img src="https://m.media-amazon.com/images/I/51CJu3t4PvL._AC_UF894,1000_QL80_.jpg" alt="Spectrum" style="max-width: 600px; height: auto; margin-top: 5px;">
+      </div>
+    </div>
+  </div>
+  <div>
+    <h2>Etiology: Causes and Risk Factors</h2>
+    <p>There is no single simple cause. Instead, schizophrenia emerges from a complex interplay of biological, genetic, psychological, and environmental factors.</p>
+    <div class="etiology-overlap">
+      <div class="factor biological">Biological</div>
+      <div class="factor genetic">Genetic</div>
+      <div class="factor psychological">Psychological</div>
+      <div class="factor environmental">Environmental</div>
+    </div>
+    <ul>
+      <li>Genetic predisposition</li>
+      <li>Brain structure and chemistry</li>
+      <li>Environmental triggers</li>
+      <li>Prenatal and perinatal complications</li>
+    </ul>
+  </div>
+</section>
+
+  <section id="diagnosis">
+    <div class="content-column" style="flex: 100%;">
+      <h1>Symptoms & Diagnosis</h1>
+      
+      <h2>Symptoms</h2>
+      <img src="https://www.nmhs.health.wa.gov.au/News/2022/05/24/~/media/871308F083BA416586D8F136CEEE6AE1.ashx?h=461&w=660" alt="Brain">
+      <p>Schizophrenia symptoms are typically categorized into three groups:</p>
+      <h3>Positive symptoms</h3>
+      <p>Hallucinations, delusions, and disorganized speech or behaviour</p>
+      
+      <h3>Negative symptoms</h3>
+      <p>Reduced emotional expression, social withdrawal</p>
+      
+      <h3>Cognitive symptoms</h3>
+      <p>Impaired attention, memory, and executive function</p>
+
+      <h2>DSM-5 Diagnosis Requirements</h2>
+      <p>The DSM-5 defines schizophrenia through specific criteria:</p>
+      <ul>
+        <li>Presence of two or more characteristic symptoms for at least one month</li>
+        <li>Significant social/occupational dysfunction</li>
+        <li>Continuous signs of disturbance for at least six months</li>
+        <li>Exclusion of other mental disorders and substance use</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="treatment">
+    <div class="content-column" style="flex: 100%;">
+      <h1>Treatment & Management</h1>
+      
+      <h2>Medications</h2>
+      <p>Antipsychotic medications are the cornerstone of treatment:</p>
+      <ul>
+        <li>First-generation (typical) antipsychotics</li>
+        <li>Second-generation (atypical) antipsychotics</li>
+        <li>New developments like non-dopamine based drugs (e.g., KarXT)</li>
+      </ul>
+
+      <h2>Therapies & Supports</h2>
+      <p>Comprehensive treatment includes:</p>
+      <ul>
+        <li>Individual psychotherapy</li>
+        <li>Family therapy and education</li>
+        <li>Social skills training</li>
+        <li>Vocational rehabilitation</li>
+        <li>Community support programs</li>
+      </ul>
+
+      <h2>Early Intervention</h2>
+      <p>Early detection and treatment significantly improve outcomes:</p>
+      <ul>
+        <li>Recognition of prodromal symptoms</li>
+        <li>Rapid access to specialized care</li>
+        <li>Coordinated specialty care programs</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="conclusion">
+    <div class="content-column" style="flex: 100%;">
+      <h1>Key Takeaways & Future</h1>
+      <p>Schizophrenia is a serious but treatable mental health condition. With the right mix of medication, therapy, and community support, people can lead fulfilling lives. We must:</p>
+      <ul>
+        <li>Reduce stigma and discrimination</li>
+        <li>Improve access to quality care</li>
+        <li>Invest in ongoing research</li>
+        <li>Develop more effective treatments</li>
+        <li>Enhance early intervention programs</li>
+      </ul>
+    </div>
+  </section>
+
+  <script>
+    function showSection(id) {
+      // Hide all sections
+      document.querySelectorAll('section').forEach(section => {
+        section.style.display = 'none';
+        section.classList.remove('active');
+      });
+      
+      // Show the selected section
+      const selectedSection = document.getElementById(id);
+      selectedSection.style.display = 'flex';
+      selectedSection.classList.add('active');
+    }
+
+    // Initialize the page by showing only the intro section
+    document.addEventListener('DOMContentLoaded', function() {
+      showSection('intro');
+    });
+  </script>
+</body>
+</html>
