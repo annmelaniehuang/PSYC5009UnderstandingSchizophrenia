@@ -4,216 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Understanding Schizophrenia</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background-color: #6200ea;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    nav {
-      background: #3700b3;
-      padding: 1rem;
-      display: flex;
-      justify-content: space-around;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 2rem;
-      display: none;
-    }
-    section.active {
-      display: flex;
-    }
-    footer {
-      background: #6200ea;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-    h2 {
-      color: #3700b3;
-    }
-
-    #background {
-      position: relative;
-      min-height: 100vh;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    #background > div {
-      max-width: 800px; /* Limit the width for a blog post style */
-      width: 100%;
-      padding: 0 20px; /* Add some horizontal padding within the centered container */
-    }
-
-    .timeline {
-      position: relative;
-      padding-left: 30px; /* Increased padding to accommodate the dot and some space */
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 10px; /* Adjusted left position for the line */
-      width: 2px;
-      background-color:  #3700b3; /* The vertical line */
-    }
-    .timeline-event {
-      padding: 10px 0;
-      position: relative;
-      padding-left: 15px; /* Add left padding for the text */
-      animation: fadeInUp 0.8s ease forwards;
-    }
-
-    .timeline-event strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .timeline-event img {
-      max-width: 100%;
-      height: auto;
-      margin-top: 10px;
-      border-radius: 5px; /* Optional: Rounded corners for images */
-    }
-
-    .timeline-event::before {
-      content: '';
-      position: absolute;
-      top: 10px; /* Adjust vertical alignment of the circle */
-      left: -4px; /* Adjust horizontal position to align with the line */
-      width: 12px;
-      height: 12px;
-      background-color: #3700b3; /* Changed the dot color */
-      border: 2px solid #aaa;
-      border-radius: 50%;
-      z-index: 1; /* Ensure circle is above the line */
-    }
-
-    /* Style for the fade effect containers */
-    #background > div > * {
-      opacity: 1;
-      transition: opacity 0.3s ease-in-out;
-    }
-
-    .fade-out-top {
-      opacity: 0.5 !important;
-    }
-
-    .fade-out-bottom {
-      opacity: 0.5 !important;
-    }
-
-    .etiology-overlap {
-      position: relative;
-      width: 400px;
-      height: 400px;
-      margin: 20px auto;
-    }
-
-    .factor {
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-weight: bold;
-      opacity: 0.7;
-      transition: opacity 0.3s ease-in-out;
-      text-align: center;
-      padding: 15px;
-      box-sizing: border-box;
-      font-size: 1.1em;
-      cursor: pointer;
-    }
-
-    .factor:hover {
-      opacity: 1;
-      z-index: 10;
-    }
-
-    .biological {
-      background-color: #4CAF50;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 1;
-    }
-
-    .genetic {
-      background-color: #2196F3;
-      top: 50%;
-      left: 50%;
-      transform: translate(30%, -50%);
-      z-index: 2;
-    }
-
-    .psychological {
-      background-color: #FF9800;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, 20%);
-      z-index: 3;
-    }
-
-    .environmental {
-      background-color: #9C27B0;
-      top: 50%;
-      left: 50%;
-      transform: translate(20%, 20%);
-      z-index: 4;
-    }
-    
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .content-column {
-      flex: 60%;
-      padding-right: 20px;
-    }
-    .agenda-column {
-      flex: 40%;
-      padding-left: 20px;
-      border-left: 2px solid #3700b3;
-    }
-    .agenda-column h2 {
-      color: #3700b3;
-      margin-top: 0;
-    }
-    .agenda-column ul {
-      line-height: 2.0;
-      font-size: 1.1em;
-      padding-left: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <body>
   <header>
     <h1>Understanding Schizophrenia</h1>
@@ -297,8 +90,9 @@
 </script>
 
 <section id="background" style="padding: 20px; display: flex; flex-direction: column; align-items: center;">
-  <div style="max-width: 800px; width: 100%;">
-
+  <!-- <div style="max-width: 800px; width: 100%;"> -->
+  <div class="blog-content-wrapper">
+  <div>
     <h2>Prevalence and Demographics</h2>
     <p>Schizophrenia affects about 0.3%–0.7% of the population worldwide. The disorder typically manifests in late adolescence or early adulthood, with slightly higher rates in urban areas and among certain demographic groups.</p>
     <canvas id="prevalenceChart" width="400" height="300"></canvas>
@@ -340,53 +134,330 @@
       </div>
       <div class="timeline-event">
         <strong>Today:</strong> <p>Schizophrenia understood as a complex, multifactorial spectrum.</p>
-        <img src="https://m.media-amazon.com/images/I/51CJu3t4PvL._AC_UF894,1000_QL80_.jpg" alt="Spectrum" style="max-width: 600px; height: auto; margin-top: 5px;">
+        <img src="https://m.media-amazon.com/images/I/51CJu3t4PvL._AC_UF894,1000_QL80_.jpg" alt="Spectrum" style="max-width: 400px; height: auto; margin-top: 5px;">
       </div>
     </div>
   </div>
   <div>
     <h2>Etiology: Causes and Risk Factors</h2>
-    <p>There is no single simple cause. Instead, schizophrenia emerges from a complex interplay of biological, genetic, psychological, and environmental factors.</p>
+    <p>Schizophrenia is a complex condition, and the exact cause is unknown. There is no single simple cause. Instead, schizophrenia emerges from a complex interplay of biological, genetic, psychological, and environmental factors.</p>
+    
     <div class="etiology-overlap">
-      <div class="factor biological">Biological</div>
-      <div class="factor genetic">Genetic</div>
-      <div class="factor psychological">Psychological</div>
-      <div class="factor environmental">Environmental</div>
+      <div id="biologicalFactor" class="factor biological">Biological</div>
+      <div id="geneticFactor" class="factor genetic">Genetic</div>
+      <div id="psychologicalFactor" class="factor psychological">Psychological</div>
+      <div id="environmentalFactor" class="factor environmental">Environmental</div>
     </div>
-    <ul>
-      <li>Genetic predisposition</li>
-      <li>Brain structure and chemistry</li>
-      <li>Environmental triggers</li>
-      <li>Prenatal and perinatal complications</li>
-    </ul>
+    <div id="etiologyInfo">
+    </div>
   </div>
 </section>
 
-  <section id="diagnosis">
-    <div class="content-column" style="flex: 100%;">
-      <h1>Symptoms & Diagnosis</h1>
-      
-      <h2>Symptoms</h2>
-      <img src="https://www.nmhs.health.wa.gov.au/News/2022/05/24/~/media/871308F083BA416586D8F136CEEE6AE1.ashx?h=461&w=660" alt="Brain">
-      <p>Schizophrenia symptoms are typically categorized into three groups:</p>
-      <h3>Positive symptoms</h3>
-      <p>Hallucinations, delusions, and disorganized speech or behaviour</p>
-      
-      <h3>Negative symptoms</h3>
-      <p>Reduced emotional expression, social withdrawal</p>
-      
-      <h3>Cognitive symptoms</h3>
-      <p>Impaired attention, memory, and executive function</p>
+<section id="diagnosis" class="blog-section">
+  <div class="blog-content-wrapper">
+    <h1>Symptoms</h1>
+    <div class="info-block">
+      <p>📋 <strong>Psychosis</strong> is a collection of symptoms that are characterized by a loss of contact with reality.</p>
+    </div>
+    <p>Psychosis is the hallmark of schizophrenia. It is characterized by a disconnect between what a person sees, hears, or feels and what is actually there. This can manifest in various ways:</p>
+    <div class="symptoms-tabs">
+      <div class="tab">
+        <button class="tab-button" onclick="toggleTab('positive')">Positive symptoms</button>
+        <div id="positive" class="tab-content">
+          <div class="sub-tab">
+            <button class="sub-tab-button" onclick="toggleSubTab('hallucinations')">Hallucinations</button>
+            <div id="hallucinations" class="sub-tab-content">
+              <p>Hear, see, or feel things that are not there.</p>
+              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/N3jo-0bdSsY?si=LzUKt-ZZ4p5fsK5u&amp;start=274&amp;end=310" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
 
-      <h2>DSM-5 Diagnosis Requirements</h2>
-      <p>The DSM-5 defines schizophrenia through specific criteria:</p>
+          <div class="sub-tab">
+            <button class="sub-tab-button" onclick="toggleSubTab('delusions')">Delusions</button>
+            <div id="delusions" class="sub-tab-content">
+              <p>Believing things that are not true.</p>
+              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/fJMOySCn5ho?si=Mbsv56X9lq9jSSfM&amp;start=307&amp;end=375" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="sub-tab">
+            <button class="sub-tab-button" onclick="toggleSubTab('disorganizedSpeech')">Disorganized Thinking / Speech</button>
+            <div id="disorganizedSpeech" class="sub-tab-content">
+              <p>Speaking in a way that is hard to understand.</p>
+              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/u2vMnyTiwp4?si=pQ5wCNBqKnLG5u1v&amp;start=19" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+
+          <div class="sub-tab">
+            <button class="sub-tab-button" onclick="toggleSubTab('disorganizedMovement')">Disorganized or Catatonic Behaviour</button>
+            <div id="disorganizedMovement" class="sub-tab-content">
+              <p>Disorganized behavior means difficulty organizing one's actions or behaving inappropriately – someone might neglect hygiene, wear bizarre outfits (like a winter coat in summer), or have unpredictable emotional outbursts.</p>
+            </div>
+          </div>
+
+          <div class="sub-tab">
+            <button class="sub-tab-button" onclick="toggleSubTab('catatonicSymptoms')">Catatonic Symptoms</button>
+            <div id="catatonicSymptoms" class="sub-tab-content">
+              <p>Catatonic symptoms are at the extreme end of disorganized behavior: the person might become very rigid, unresponsive, or hold strange postures for extended periods, or alternatively, exhibit purposeless excessive movement.</p>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/zAEJ-Jvndms?si=d7pjYzLY5TfH29oI&amp;end=24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab">
+        <button class="tab-button" onclick="toggleTab('negative')">Negative symptoms</button>
+        <div id="negative" class="tab-content">
+          <ul>
+            <li>Reduced emotional expression</li>
+            <li>Lack of motivation</li>
+            <li>Social withdrawal</li>
+            <li>Diminished speech</li>
+            <li>Inability to experience pleasure (anhedonia)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tab">
+        <button class="tab-button" onclick="toggleTab('cognitive')">Cognitive symptoms</button>
+        <div id="cognitive" class="tab-content">
+          <p>Impaired attention, memory, and executive function</p>
+        </div>
+      </div>
+    </div>
+    <h2>Stages of Schizophrenia</h2>
+    <h3>#1: Prodromal stage</h3>
+    <p>The prodromal stage is characterized by subtle changes in behavior and mood. 
+      It is a time when the person is beginning to experience symptoms of schizophrenia, but they are not yet severe enough to be noticed, 
+      which makes it difficult to identify. Some symptoms include yet not limited to: social isolation, irritability, difficulty concentrating, and sleep disturbances.</p>
+    <h3>#2 Active stage</h3>
+    <p>This is the acute phase of schizophrenia, where the person experiences the core symptoms of psychosis such as hallucinations and delusions.</p>
+    <h3>#3 Residual stage</h3>
+    <p>Residual schizophrenia refers to a phase with reduced or less severe symptoms compared to the active (psychotic) phase.
+      At this stage, the positive symptoms are typically absent.
+      The person is likely to be experiencing negative symptoms, low motivation, low energy, depressed mood and so on.
+      DSM-5-TR Update: The residual phase is no longer used for diagnostic purposes, but still useful clinically to describe symptom patterns in schizophrenia.
+    </p>
+
+    <h1>DSM-5 Diagnosis</h1>
+    <p><strong>To diagnose schizophrenia, the following criteria (A–F) must be met:</strong></p>
+    <div class="info-block">
+      <p>📝 <strong>Quick Summary:</strong></p>
       <ul>
-        <li>Presence of two or more characteristic symptoms for at least one month</li>
-        <li>Significant social/occupational dysfunction</li>
-        <li>Continuous signs of disturbance for at least six months</li>
-        <li>Exclusion of other mental disorders and substance use</li>
+        <li><strong>≥2 characteristic symptoms</strong> (delusions, hallucinations, disorganized speech) for <strong>≥1 month</strong></li>
+        <li><strong>≥6 months</strong> continuous signs of disturbance</li>
+        <li><strong>Significant functional decline</strong> in work, relationships, or self-care</li>
+        <li><strong>Rule out</strong> mood disorders, substance use, and medical conditions</li>
       </ul>
     </div>
+
+    <details>
+      <summary>A. Characteristic Symptoms</summary>
+      <div class="details-content">
+        <p>Two (or more) of the following, each present for a significant portion of time during a 1-month period (or less if successfully treated).
+        <strong>At least one</strong> must be (1), (2), or (3):</p>
+        <ol>
+          <li>Delusions</li>
+          <li>Hallucinations</li>
+          <li>Disorganized speech (e.g., frequent derailment or incoherence)</li>
+          <li>Grossly disorganized or catatonic behavior</li>
+          <li>Negative symptoms (e.g., diminished emotional expression or avolition)</li>
+        </ol>
+      </div>
+    </details>
+
+    <details>
+      <summary>B. Social/Occupational Dysfunction</summary>
+      <div class="details-content">
+        <p>For a significant portion of the time since onset, level of functioning in one or more major areas such as work, interpersonal relations, or self-care is markedly below the level achieved prior to onset.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>C. Duration</summary>
+      <div class="details-content">
+        <p>Continuous signs of the disturbance persist for at least 6 months. This 6-month period must include at least 1 month of symptoms that meet Criterion A (active-phase symptoms) and may include periods of prodromal or residual symptoms.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>D. Schizoaffective and Mood Disorder Exclusion</summary>
+      <div class="details-content">
+        <p>Schizoaffective disorder and depressive or bipolar disorder with psychotic features have been ruled out because either:</p>
+        <ul>
+          <li>No major depressive or manic episodes have occurred concurrently with the active-phase symptoms; or</li>
+          <li>If mood episodes have occurred during active-phase symptoms, they have been present for a minority of the total duration.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>E. Substance/Medical Condition Exclusion</summary>
+      <div class="details-content">
+        <p>The disturbance is not attributable to the physiological effects of a substance or another medical condition.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>F. Autism Spectrum Disorder Exclusion</summary>
+      <div class="details-content">
+        <p>If there is a history of autism spectrum disorder or a communication disorder of childhood onset, a diagnosis of schizophrenia is made only if prominent delusions or hallucinations are also present for at least 1 month (or less if successfully treated).</p>
+      </div>
+    </details>
+  
+    <h1>Diagnostic Challenges in Schizophrenia</h1>
+    <details>
+      <summary>No definitive lab tests or brain scans</summary>
+      <div class="details-content">
+        <ol>
+          <li>Schizophrenia is diagnosed clinically, based on observed symptoms and illness course.</li>
+          <li>Diagnosis relies on interviews with the patient and family and careful observation over time.</li>
+        </ol>
+      </div>
+    </details>
+    
+    <details>
+      <summary>Early-stage uncertainty</summary>
+        <div class="details-content">
+          <ol>
+            <li>In the first few weeks or months, it may be unclear whether the case is:</li>
+            <ul>
+              <li>Schizophrenia</li>
+              <li>A brief psychotic episode</li>
+              <li>Mood-related psychosis</li>
+            </ul>
+            <li>Clinicians may delay diagnosis until the clinical picture becomes clearer.</li>
+          </ol>
+        </div>
+    </details>
+
+    <details>
+      <summary>Symptom Overlap with Other Disorders</summary>
+        <div class="details-content">
+          <ol>
+            <li>Severe depression</li>
+            <ul>
+              <li>Can cause delusional guilt or even hallucinations.</li>
+            </ul>
+            <li>Bipolar mania</li>
+            <ul>
+              <li>May include psychotic features such as grandiosity or hallucinations.</li>
+            </ul>
+            <li>Drug-induced psychosis</li>
+            <ul>
+              <li>Methamphetamine use or other substance intoxication can mimic schizophrenia symptoms in the short term.</li>
+            </ul>
+            <li>Conclusion:</li>
+            <ul>
+              <li>Diagnosing schizophrenia requires evaluating:</li>
+              <li>Symptom duration</li>
+              <li>Context (e.g., presence or absence of drug use)</li>
+              <li>Mood symptoms</li>
+            </ul>
+            <li>Clinicians must "piece together the puzzle" carefully.</li>
+          </ol>
+        </div>
+    </details>
+    
+    <details>
+      <summary>Comorbid Conditions and Limited Insight</summary>
+      <div class="details-content">
+        <ul>
+          <li><strong>Comorbidities are common</strong>
+            <ul>
+              <li>Anxiety disorders</li>
+              <li>Depression</li>
+              <li>Substance abuse</li>
+            </ul>
+          </li>
+          <li>These can <strong>muddy the clinical picture</strong>, making diagnosis more complex.</li>
+          <li><strong>Limited insight</strong>
+            <ul>
+              <li>Patients may <strong>not report hallucinations or delusions</strong>, especially early on, due to:
+                <ul>
+                  <li><strong>Fear</strong></li>
+                  <li><strong>Paranoia</strong></li>
+                  <li><strong>Distrust</strong></li>
+                </ul>
+              </li>
+              <li>Families may only notice a person has <strong>"changed"</strong>, without understanding the cause.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </details>
+    
+    <details>
+      <summary>Diagnostic Delay and Its Causes</summary>
+      <div class="details-content">
+        <ul>
+          <li>Diagnosis often occurs <strong>months or even a year or more</strong> after symptom onset.</li>
+          <li><strong>Contributing factors</strong>:
+            <ul>
+              <li><strong>Diagnostic complexity</strong></li>
+              <li><strong>Social stigma</strong>, which may lead families to <strong>avoid seeking psychiatric help</strong></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </details>
+    
+    <details>
+      <summary>The Diagnostic Process</summary>
+      <div class="details-content">
+        <ul>
+          <li>Mental health professionals are trained to:
+            <ul>
+              <li>Recognize <strong>schizophrenia symptom patterns</strong></li>
+              <li>Conduct <strong>thorough interviews</strong></li>
+              <li>Use <strong>psychological tests</strong> or <strong>standardized questionnaires</strong> when needed</li>
+            </ul>
+          </li>
+          <li>A clear diagnosis helps shape an <strong>appropriate treatment plan</strong>.</li>
+        </ul>
+      </div>
+    </details>
+    
+    <details>
+      <summary>Schizophrenia as a Spectrum Disorder</summary>
+      <div class="details-content">
+        <ul>
+          <li>Schizophrenia is <strong>not all-or-nothing</strong>; it exists on a <strong>spectrum</strong>.</li>
+          <li><strong>Variability in symptom patterns and outcomes</strong>:
+            <ul>
+              <li>Some individuals have <strong>severe, chronic symptoms</strong></li>
+              <li>Others may:
+                <ul>
+                  <li>Have <strong>one or two episodes</strong> then recover</li>
+                  <li>Show mainly <strong>negative symptoms</strong> (e.g., lack of motivation) with few positive symptoms</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Hence, the term <strong>"schizophrenia spectrum disorders"</strong> is often used.</li>
+        </ul>
+      </div>
+    </details>
+    
+    <details>
+      <summary>Hope and Recovery</summary>
+      <div class="details-content">
+        <ul>
+          <li><strong>Outcomes vary</strong>, even for those with full schizophrenia diagnoses.</li>
+          <li>With <strong>support and treatment</strong>:
+            <ul>
+              <li>Many people can live <strong>fulfilling lives</strong>.</li>
+              <li><strong>Success stories exist</strong> but are underrepresented in media.</li>
+            </ul>
+          </li>
+          <li><strong>Important reminder</strong>:
+            <ul>
+              <li>A diagnosis of schizophrenia is <strong>serious</strong>, but <strong>not the end of one's aspirations</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </details>
   </section>
 
   <section id="treatment">
@@ -435,24 +506,7 @@
     </div>
   </section>
 
-  <script>
-    function showSection(id) {
-      // Hide all sections
-      document.querySelectorAll('section').forEach(section => {
-        section.style.display = 'none';
-        section.classList.remove('active');
-      });
-      
-      // Show the selected section
-      const selectedSection = document.getElementById(id);
-      selectedSection.style.display = 'flex';
-      selectedSection.classList.add('active');
-    }
-
-    // Initialize the page by showing only the intro section
-    document.addEventListener('DOMContentLoaded', function() {
-      showSection('intro');
-    });
-  </script>
+  <script src="script.js"></script>
+  <button id="backToTopBtn" title="Back to Top"></button>
 </body>
 </html>
