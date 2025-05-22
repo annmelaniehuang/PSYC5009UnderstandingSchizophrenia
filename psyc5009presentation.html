@@ -10,7 +10,7 @@
 <body>
   <header>
     <h1>Understanding Schizophrenia</h1>
-    <p>Presented by Anran HUANG (Ann)</p>
+    <p>A Presentation by Anran HUANG (Ann) for PSYC5009 Assessment 1</p>
   </header>
 
   <nav>
@@ -22,22 +22,46 @@
   </nav>
 
   <section id="intro" class="active">
-    <div class="content-column">
-      <h2>Schizophrenia</h2>
-      <p>A serious and complex mental health disorder that affects perception, thinking, and behavior.</p>
-      <img src="https://www.shutterstock.com/image-vector/paranoia-schizophrenia-mental-illness-abstract-260nw-2447194753.jpg" alt="Understanding Schizophrenia" style="max-width: 100%; height: auto; margin: 20px 0;">
-    </div>
-    <div class="agenda-column">
-      <h2>Agenda</h2>
-      <ul>
-        <li>Background</li>
-        <li>Diagnostic Criteria</li>
-        <li>Treatment</li>
-        <li>Conclusion</li>
-      </ul>
+    <div class="card-container">
+        <div class="card active">
+            <div class="content-column">
+                <h2>Schizophrenia</h2>
+                <p>A serious and complex mental health disorder that affects perception, thinking, and behavior.</p>
+                <img src="https://www.shutterstock.com/image-vector/paranoia-schizophrenia-mental-illness-abstract-260nw-2447194753.jpg" alt="Understanding Schizophrenia" style="max-width: 100%; height: auto; margin: 20px 0;">
+            </div>
+        </div>
+        <div class="card facts-card">
+            <div class="agenda-column">
+                <h2>7 Schizophrenia Facts</h2>
+                <ul class="facts-list">
+                    <li class="fact-item">Schizophrenia is not a split personality.</li>
+                    <li class="fact-item">Schizophrenia is one of the top 15 leading causes of disability worldwide.</li>
+                    <li class="fact-item">People living with schizophrenia die between 10 and 15 years earlier than the general population.</li>
+                    <li class="fact-item">Each individual's experience with schizophrenia is unique.</li>
+                    <li class="fact-item">People with schizophrenia are more likely to be victims of violence than perpetrators.</li>
+                    <li class="fact-item">Schizophrenia is a spectrum disorder, which means that the symptoms can vary widely from person to person.</li>
+                    <li class="fact-item">There is hope: It is possible to live a full and meaningful life even if diagnosed with schizophrenia.</li>
+                </ul>
+            </div>
+        </div>
     </div>
 
+    <script src="script.js"></script>
+    <script>
+        const factsCard = document.querySelector('.facts-card');
+        const factItems = document.querySelectorAll('.fact-item');
+        let factIndex = 0;
+
+        factsCard.addEventListener('click', () => {
+            if (factIndex < factItems.length) {
+                factItems[factIndex].style.display = 'block';
+                factIndex++;
+            }
+        });
+    </script>
+
   </section>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -45,39 +69,67 @@
     const prevalenceChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: ['Worldwide', 'Adults (Worldwide)', 'Australia'],
+        labels: ['Worldwide', 'Adults (Worldwide)', 'Adults (Australia)'],
         datasets: [{
           label: 'Prevalence (%)',
-          data: [0.32, 0.45, 0.24], // Converted Australia's rate to percentage
+          data: [0.32, 0.45, 0.24],
           backgroundColor: [
-            'rgba(255, 99, 132, 0.7)',
-            'rgba(54, 162, 235, 0.7)',
-            'rgba(255, 206, 86, 0.7)'
+            'rgba(204, 121, 167, 0.7)', // Okabe-Ito pink
+            'rgba(0, 158, 115, 0.7)',   // Okabe-Ito green
+            'rgba(230, 159, 0, 0.7)'    // Okabe-Ito orange
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)'
+            'rgb(204, 121, 167)',       // Okabe-Ito pink
+            'rgb(0, 158, 115)',         // Okabe-Ito green
+            'rgb(230, 159, 0)'          // Okabe-Ito orange
           ],
           borderWidth: 1
         }]
       },
       options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
           y: {
             beginAtZero: true,
             title: {
               display: true,
-              text: 'Percentage (%)'
+              text: 'Percentage (%)',
+              font: {
+                size: 16,
+                weight: 'bold'
+              }
+            },
+            ticks: {
+              font: {
+                size: 14
+              }
+            },
+            grid: {
+              display: false
+            }
+          },
+          x: {
+            ticks: {
+              font: {
+                size: 14
+              }
+            },
+            grid: {
+              display: false
             }
           }
         },
         plugins: {
           title: {
             display: true,
-            text: 'Prevalence of Schizophrenia',
+            text: 'Prevalence of Schizophrenia (World Overall, Adults vs Australian Adults)',
+            font: {
+              size: 18,
+              weight: 'bold'
+            },
             padding: {
-              bottom: 10
+              bottom: 20
             }
           },
           legend: {
@@ -88,6 +140,12 @@
     });
   });
 </script>
+
+<style>
+  #prevalenceChart {
+    height: 650px !important;
+  }
+</style>
 
 <section id="background" style="padding: 20px; display: flex; flex-direction: column; align-items: center;">
   <!-- <div style="max-width: 800px; width: 100%;"> -->
@@ -156,6 +214,7 @@
 <section id="diagnosis" class="blog-section">
   <div class="blog-content-wrapper">
     <h1>Symptoms</h1>
+    <img src="https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2022/06/stages_schizophrenia_GettyImages1338339014_Header-1024x575.jpg?w=1155&h=1528" alt="Schizophrenia Symptoms" style="width: 100%; height: auto; margin: 20px 0;">  
     <div class="info-block">
       <p>📋 <strong>Psychosis</strong> is a collection of symptoms that are characterized by a loss of contact with reality.</p>
     </div>
@@ -460,53 +519,195 @@
     </details>
   </section>
 
-  <section id="treatment">
-    <div class="content-column" style="flex: 100%;">
-      <h1>Treatment & Management</h1>
-      
-      <h2>Medications</h2>
-      <p>Antipsychotic medications are the cornerstone of treatment:</p>
-      <ul>
-        <li>First-generation (typical) antipsychotics</li>
-        <li>Second-generation (atypical) antipsychotics</li>
-        <li>New developments like non-dopamine based drugs (e.g., KarXT)</li>
-      </ul>
-
-      <h2>Therapies & Supports</h2>
-      <p>Comprehensive treatment includes:</p>
-      <ul>
-        <li>Individual psychotherapy</li>
-        <li>Family therapy and education</li>
-        <li>Social skills training</li>
-        <li>Vocational rehabilitation</li>
-        <li>Community support programs</li>
-      </ul>
-
-      <h2>Early Intervention</h2>
-      <p>Early detection and treatment significantly improve outcomes:</p>
-      <ul>
-        <li>Recognition of prodromal symptoms</li>
-        <li>Rapid access to specialized care</li>
-        <li>Coordinated specialty care programs</li>
-      </ul>
+<section id="treatment">
+  <div class="blog-content-wrapper">
+    <h1>Treatment & Management</h1>
+    <p>While there's no cure for schizophrenia yet, effective treatments are available in helping patients manage symptoms, reduce relapses, and improve functioning. 
+      Early identification and intervention may prevent or delay schizophrenia development and improve overall quality of life.</p>
+    
+    <h2>Medications</h2>
+    <p>Antipsychotic medications are the cornerstone of treatment:</p>
+    <img src="https://ourworldindata.org/cdn-cgi/imagedelivery/qLq-8BTgXU8yG0N6HnOy8g/8b0c0fa4-d146-4d13-d62e-083556a25f00/w=1350" 
+         alt="Development of Antipsychotic Medications" 
+         class="zoomable-image" 
+         style="width: 100%; height: auto;"
+         onclick="openModal(this)">
+    
+    <!-- Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+      <img class="modal-content" id="modalImage">
     </div>
-  </section>
 
-  <section id="conclusion">
-    <div class="content-column" style="flex: 100%;">
-      <h1>Key Takeaways & Future</h1>
-      <p>Schizophrenia is a serious but treatable mental health condition. With the right mix of medication, therapy, and community support, people can lead fulfilling lives. We must:</p>
-      <ul>
-        <li>Reduce stigma and discrimination</li>
-        <li>Improve access to quality care</li>
-        <li>Invest in ongoing research</li>
-        <li>Develop more effective treatments</li>
-        <li>Enhance early intervention programs</li>
-      </ul>
+    <h3>Medication Types</h3>
+    <div class="medication-container">
+      <div class="medication-card" data-category="fga">
+        <h3>First-Gen Antipsychotics</h3>
+        <p><strong>Mechanism:</strong> Primarily block dopamine D2 receptors.</p>
+        <p><strong>Examples:</strong> Haloperidol, Chlorpromazine.</p>
+        <p><strong>Effectiveness:</strong> Strong for positive symptoms.</p>
+        <p><strong>Side Effects:</strong> High risk of EPS, sedation, tardive dyskinesia.</p>
+        <p class="source">(Source: bap.org.uk)</p>
+      </div>
+  
+      <div class="medication-card" data-category="sga">
+          <h3>Second-Gen Antipsychotics</h3>
+          <p><strong>Mechanism:</strong> Block D2 and 5-HT2A receptors.</p>
+          <p><strong>Examples:</strong> Risperidone, Olanzapine, Quetiapine.</p>
+          <p><strong>Effectiveness:</strong> As effective as FGAs for positive symptoms, better tolerability.</p>
+          <p><strong>Side Effects:</strong> Weight gain, metabolic syndrome, sedation.</p>
+          <p class="source">(Source: bap.org.uk)</p>
+      </div>
+  
+      <div class="medication-card" data-category="clozapine">
+          <h3>Clozapine</h3>
+          <p><strong>Mechanism:</strong> Modulates serotonin, dopamine, and others.</p>
+          <p><strong>Effectiveness:</strong> Most effective for treatment-resistant schizophrenia, reduces suicide risk.</p>
+          <p><strong>Side Effects:</strong> Agranulocytosis (requires monitoring), weight gain, seizures, sedation.</p>
+          <p class="source">(Source: psychiatryonline.org)</p>
+      </div>
+  
+      <div class="medication-card" data-category="karxt">
+          <h3>KarXT (Cobenfy)</h3>
+          <p><strong>Mechanism:</strong> Targets muscarinic acetylcholine receptors.</p>
+          <p><strong>Effectiveness:</strong> Significant reduction in positive symptoms, promising fewer side effects.</p>
+          <p><strong>Side Effects:</strong> Early trials suggest fewer sedation, weight gain, or motor issues.</p>
+          <p class="source">(Source: fda.gov, npr.org)</p>
+      </div>
     </div>
-  </section>
+
+    <h2>Therapies & Supports</h2>
+    <p>Comprehensive treatment includes:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Intervention</th>
+                <th>Effectiveness</th>
+                <th>Limitations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Cognitive Behavioral Therapy for Psychosis (CBTp)</strong></td>
+                <td>• Helps patients reframe and cope with delusions/hallucinations<br>• Reduces distress and improves insight into symptoms</td>
+                <td>• Does not eliminate psychotic symptoms<br>• Most effective when combined with medication</td>
+            </tr>
+            <tr>
+                <td><strong>Psychoeducation</strong></td>
+                <td>• Improves patient and family understanding of the illness and its treatment<br>• Helps with medication adherence and recognizing relapse signs</td>
+                <td>• Relies on participant engagement and access to trained facilitators</td>
+            </tr>
+            <tr>
+                <td><strong>Family Therapy</strong></td>
+                <td>• Reduces relapse by lowering family stress and criticism ("expressed emotion")<br>• Improves family dynamics and communication</td>
+                <td>• Not all families have time, resources, or willingness to participate</td>
+            </tr>
+            <tr>
+                <td><strong>Social Skills & Rehabilitation Programs</strong></td>
+                <td>• Teach life skills, job readiness, and foster independence<br>• Help reduce isolation and improve social function</td>
+                <td>• Gains may be gradual<br>• Access to quality programs varies by location</td>
+            </tr>
+            <tr>
+                <td><strong>Assertive Community Treatment (ACT)</strong></td>
+                <td>• Reduces hospitalizations<br>• Improves medication adherence<br>• Helps with housing and daily care<br>• Highly effective for individuals with severe or persistent symptoms</td>
+                <td>• Resource-intensive<br>• May not be available in all regions</td>
+            </tr>
+            <tr>
+                <td><strong>Adjunctive Therapies (Art, Cognitive Remediation, Lifestyle)</strong></td>
+                <td>• Art/music therapy promotes engagement and expression<br>• Cognitive remediation helps improve memory and attention<br>• Lifestyle education targets diet, exercise, smoking cessation</td>
+                <td>• Limited evidence for standalone use<br>• Often require motivation and structured support</td>
+            </tr>
+            <tr>
+                <td><strong>Early Intervention Programs</strong></td>
+                <td>• Specialized clinics for first-episode psychosis significantly improve outcomes<br>• Reduce duration of untreated psychosis (DUP), linked to better long-term functioning<br>• Offer a full suite of services: meds, therapy, school/work support, family outreach<br><span class="source">(Source: emedicine.medscape.com)</span></td>
+                <td>• Most effective in first few years; long-term effects depend on continued support<br>• May not be accessible in rural or under-resourced areas</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Early Intervention</h2>
+    <p>Early detection and treatment significantly improve outcomes:</p>
+    <ul>
+      <li>Recognition of prodromal symptoms</li>
+      <li>Rapid access to specialized care</li>
+      <li>Coordinated specialty care programs</li>
+    </ul>
+
+    <h2>Hope, Challenges, Needs and Research Directions</h2>
+    <div class="symptoms-tabs">
+      <div class="tab">
+        <button class="tab-button" onclick="toggleTab('hopes')">🌟 Hopes</button>
+        <div id="hopes" class="tab-content">
+          <ul>
+            <li><strong>Symptom Control and Stability:</strong> Most individuals with schizophrenia can experience significant symptom relief—especially of positive symptoms like hallucinations and delusions—through antipsychotic medication.</li>
+            <li><strong>New Drug Development:</strong> The 2024 FDA approval of KarXT (Cobenfy) marks a major breakthrough. Unlike traditional antipsychotics, KarXT does not primarily block dopamine receptors and has shown fewer side effects like sedation and weight gain.</li>
+            <li><strong>Early Intervention Works:</strong> Specialized early psychosis programs can dramatically improve long-term outcomes if treatment is initiated early, especially in youth.</li>
+            <li><strong>Recovery-Oriented Care:</strong> The modern emphasis on holistic, person-centered approaches—including peer support and vocational rehab—offers hope for meaningful, independent lives, even if some symptoms persist.</li>
+          </ul>
+          <p class="source">(Sources: bap.org.uk, fda.gov, npr.org, emedicine.medscape.com)</p>
+        </div>
+      </div>
+
+      <div class="tab">
+        <button class="tab-button" onclick="toggleTab('challenges')">⚠️ Challenges</button>
+        <div id="challenges" class="tab-content">
+          <ul>
+            <li><strong>Adherence Issues:</strong> Medication non-adherence remains a critical issue, often due to side effects or lack of insight into the illness. Long-acting injectables can help, but uptake varies.</li>
+            <li><strong>Treatment-Resistant Cases:</strong> About 25% of patients do not respond to standard antipsychotics. Clozapine is the best option in these cases but carries serious risks like agranulocytosis, requiring strict monitoring.</li>
+            <li><strong>Side Effects and Metabolic Issues:</strong> Many antipsychotics, especially second-generation ones, cause significant weight gain and metabolic syndrome, increasing the risk of diabetes and heart disease.</li>
+            <li><strong>Negative and Cognitive Symptoms:</strong> Current treatments are less effective for negative symptoms (e.g., social withdrawal, lack of motivation) and cognitive deficits. These symptoms often impair real-world functioning even when psychosis is controlled.</li>
+            <li><strong>Relapse Risk:</strong> Schizophrenia has a relapsing-remitting course. Each relapse can worsen long-term outcomes. Preventing them requires continuous care and early detection of warning signs.</li>
+          </ul>
+          <p class="source">(Sources: bap.org.uk, psychiatryonline.org)</p>
+        </div>
+      </div>
+
+      <div class="tab">
+        <button class="tab-button" onclick="toggleTab('needs')">🚨 Pressing Needs</button>
+        <div id="needs" class="tab-content">
+          <ul>
+            <li><strong>Better Tolerated Medications:</strong> There's a strong need for antipsychotics with fewer motor, cognitive, and metabolic side effects to improve adherence and long-term health outcomes.</li>
+            <li><strong>Targeting Negative Symptoms and Cognition:</strong> Existing drugs are largely ineffective for the most disabling aspects of the disorder. New treatments must address this gap to improve quality of life and functional recovery.</li>
+            <li><strong>Accessible Early Intervention Services:</strong> Programs for first-episode psychosis are not yet widely available, particularly in rural or underfunded areas, despite their proven efficacy.</li>
+            <li><strong>Culturally Sensitive, Integrated Care:</strong> Tailored treatment that respects cultural differences, includes family, and provides coordinated care (e.g., through Assertive Community Treatment teams) is essential but inconsistently applied.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tab">
+        <button class="tab-button" onclick="toggleTab('research')">🔬 Research Directions</button>
+        <div id="research" class="tab-content">
+          <ul>
+            <li><strong>Non-Dopamine-Based Therapies:</strong> KarXT's success shows promise for non-dopaminergic pathways—like the muscarinic acetylcholine system. Other targets being explored include glutamate modulation and inflammation pathways.</li>
+            <li><strong>Digital and Tech-Enabled Care:</strong> Tools like smartphone apps for symptom monitoring and early relapse detection, and virtual reality for social skills training, are being developed to support engagement and autonomy.</li>
+            <li><strong>Cognitive Remediation & Lifestyle Integration:</strong> Combining therapies that enhance memory and attention with lifestyle interventions (e.g., diet, exercise, smoking cessation) may improve both mental and physical health outcomes.</li>
+            <li><strong>Recovery Model Integration:</strong> There's a growing emphasis on shifting away from a purely clinical focus to one that enables individuals to pursue education, work, relationships, and creative goals, even with lingering symptoms.</li>
+          </ul>
+          <p class="source">(Sources: fda.gov, npr.org)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="conclusion">
+  <div class="content-column" style="flex: 100%;">
+    <h1>Key Takeaways & Future</h1>
+    <p>Schizophrenia is a serious but treatable mental health condition. With the right mix of medication, therapy, and community support, people can lead fulfilling lives. We must:</p>
+    <ul>
+      <li>Reduce stigma and discrimination</li>
+      <li>Improve access to quality care</li>
+      <li>Invest in ongoing research</li>
+      <li>Develop more effective treatments</li>
+      <li>Enhance early intervention programs</li>
+    </ul>
+  </div>
+</section>
 
   <script src="script.js"></script>
   <button id="backToTopBtn" title="Back to Top"></button>
+  
+  <footer>
+    <p>&copy; 2025 Anran Huang. All rights reserved.</p>
+  </footer>
 </body>
 </html>
