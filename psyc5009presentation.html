@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Understanding Schizophrenia</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header>
@@ -14,33 +13,58 @@
   </header>
 
   <nav>
-    <a href="#" onclick="showSection('intro')">Introduction</a>
-    <a href="#" onclick="showSection('background')">Background</a>
-    <a href="#" onclick="showSection('diagnosis')">Diagnosis</a>
-    <a href="#" onclick="showSection('treatment')">Treatment</a>
-    <a href="#" onclick="showSection('conclusion')">Conclusion</a>
+    <div class="main-nav">
+      <a href="#" onclick="showSection('intro')">Introduction</a>
+      <a href="#" onclick="showSection('background')">Background</a>
+      <a href="#" onclick="showSection('diagnosis')">Diagnosis</a>
+      <a href="#" onclick="showSection('treatment')">Treatment</a>
+      <a href="#" onclick="showSection('conclusion')">Conclusion</a>
+      <a href="#" onclick="showSection('closing')">Closing Message</a>
+      <a href="#" onclick="showSection('references')">References</a>
+    </div>
+    <div class="sub-nav" id="background-subnav" style="display: none;">
+      <a href="#" onclick="showSubsection('history')">History</a>
+      <a href="#" onclick="showSubsection('prevalence')">Prevalence and Demographics</a>
+      <a href="#" onclick="showSubsection('schizophrenia-vs-did')">Schizophrenia vs. DID</a>
+      <a href="#" onclick="showSubsection('etiology')">Etiology</a>
+    </div>
+    <div class="sub-nav" id="diagnosis-subnav" style="display: none;">
+      <a href="#" onclick="showSubsection('symptoms')">Symptoms</a>
+      <a href="#" onclick="showSubsection('phases')">Phases</a>
+      <a href="#" onclick="showSubsection('dsm5')">DSM-5</a>
+    </div>
+    <div class="sub-nav" id="treatment-subnav" style="display: none;">
+      <a href="#" onclick="showSubsection('medications')">Medications</a>
+      <a href="#" onclick="showSubsection('therapies')">Therapies & Supports</a>
+    </div>
+    <div class="sub-nav" id="conclusion-subnav" style="display: none;">
+      <a href="#" onclick="showSubsection('summary')">Summary</a>
+      <a href="#" onclick="showSubsection('hope-challenges')">Hope, Challenges, Needs and Directions</a>
+    </div>
   </nav>
 
   <section id="intro" class="active">
     <div class="card-container">
         <div class="card active">
             <div class="content-column">
-                <h2>Schizophrenia</h2>
+                <h1>Schizophrenia</h1>
                 <p>A serious and complex mental health disorder that affects perception, thinking, and behavior.</p>
                 <img src="https://www.shutterstock.com/image-vector/paranoia-schizophrenia-mental-illness-abstract-260nw-2447194753.jpg" alt="Understanding Schizophrenia" style="max-width: 100%; height: auto; margin: 20px 0;">
+                <div class="figure-caption"><i>Note</i>. From <i>Understanding Schizophrenia</i> [Online image], by Shutterstock, n.d. (<a href="https://www.shutterstock.com/image-vector/paranoia-schizophrenia-mental-illness-abstract-260nw-2447194753.jpg">Link</a>)</div>
             </div>
         </div>
         <div class="card facts-card">
             <div class="agenda-column">
-                <h2>7 Schizophrenia Facts</h2>
+                <h2>8 Common Myths/Misconceptions of Schizophrenia</h2>
                 <ul class="facts-list">
-                    <li class="fact-item">Schizophrenia is not a split personality.</li>
-                    <li class="fact-item">Schizophrenia is one of the top 15 leading causes of disability worldwide.</li>
-                    <li class="fact-item">People living with schizophrenia die between 10 and 15 years earlier than the general population.</li>
-                    <li class="fact-item">Each individual's experience with schizophrenia is unique.</li>
-                    <li class="fact-item">People with schizophrenia are more likely to be victims of violence than perpetrators.</li>
-                    <li class="fact-item">Schizophrenia is a spectrum disorder, which means that the symptoms can vary widely from person to person.</li>
-                    <li class="fact-item">There is hope: It is possible to live a full and meaningful life even if diagnosed with schizophrenia.</li>
+                    <li class="fact-item">❌ Myth #1: Schizophrenia is rare.</li>
+                    <li class="fact-item">❌ Myth #2: Schizophrenia means split personalities.</li>
+                    <li class="fact-item">❌ Myth #3: It is caused by bad parenting.</li>
+                    <li class="fact-item">❌ Myth #4: People have it because their parents have it.</li>
+                    <li class="fact-item">❌ Myth #5: People with schizophrenia are violent or dangerous.</li>
+                    <li class="fact-item">❌ Myth #6: People with schizophrenia are not smart.</li>
+                    <li class="fact-item">❌ Myth #7: All schizophrenics experience hallucinations and delusions.</li>
+                    <li class="fact-item">❌ Myth #8: Schizophrenia can't be treated. </li>
                 </ul>
             </div>
         </div>
@@ -62,657 +86,901 @@
 
   </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const ctx = document.getElementById('prevalenceChart').getContext('2d');
-    const prevalenceChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: ['Worldwide', 'Adults (Worldwide)', 'Adults (Australia)'],
-        datasets: [{
-          label: 'Prevalence (%)',
-          data: [0.32, 0.45, 0.24],
-          backgroundColor: [
-            'rgba(204, 121, 167, 0.7)', // Okabe-Ito pink
-            'rgba(0, 158, 115, 0.7)',   // Okabe-Ito green
-            'rgba(230, 159, 0, 0.7)'    // Okabe-Ito orange
-          ],
-          borderColor: [
-            'rgb(204, 121, 167)',       // Okabe-Ito pink
-            'rgb(0, 158, 115)',         // Okabe-Ito green
-            'rgb(230, 159, 0)'          // Okabe-Ito orange
-          ],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: {
-              display: true,
-              text: 'Percentage (%)',
-              font: {
-                size: 16,
-                weight: 'bold'
-              }
-            },
-            ticks: {
-              font: {
-                size: 14
-              }
-            },
-            grid: {
-              display: false
-            }
-          },
-          x: {
-            ticks: {
-              font: {
-                size: 14
-              }
-            },
-            grid: {
-              display: false
-            }
-          }
-        },
-        plugins: {
-          title: {
-            display: true,
-            text: 'Prevalence of Schizophrenia (World Overall, Adults vs Australian Adults)',
-            font: {
-              size: 18,
-              weight: 'bold'
-            },
-            padding: {
-              bottom: 20
-            }
-          },
-          legend: {
-            display: false
-          }
-        }
-      }
-    });
-  });
-</script>
-
-<style>
-  #prevalenceChart {
-    height: 650px !important;
-  }
-</style>
-
-<section id="background" style="padding: 20px; display: flex; flex-direction: column; align-items: center;">
-  <!-- <div style="max-width: 800px; width: 100%;"> -->
-  <div class="blog-content-wrapper">
-  <div>
-    <h2>Prevalence and Demographics</h2>
-    <p>Schizophrenia affects about 0.3%–0.7% of the population worldwide. The disorder typically manifests in late adolescence or early adulthood, with slightly higher rates in urban areas and among certain demographic groups.</p>
-    <canvas id="prevalenceChart" width="400" height="300"></canvas>
-    <p style="font-size: 0.9em; color: #777;">Source: [Insert your source here]</p>
-  </div>
-
-  <div>
-    <h2>History and Evolving Understanding</h2>
-    <p>Schizophrenia has been documented for centuries under different names. Key figures such as Emil Kraepelin and Eugen Bleuler laid the foundation for what we know today.</p>
-    <div class="timeline">
-      <div class="timeline-event">
-        <strong>Late 19th Century:</strong> 
-        <p>Early recognition of schizophrenia as a distinct illness.</p>
-        <img src="https://www.nlm.nih.gov/hmd/topics/diseases-of-mind/images/chainedtowall_101436547.jpg" alt="History" style="max-width: 180px; height: auto; margin-top: 5px;">
-      </div>
-      <div class="timeline-event">
-        <strong>1896:</strong> <p>Emil Kraepelin classifies "dementia praecox."</p>
-        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQz3eIldZ9Mp4fr5BWaMYnW4S0N2Ag7hdOqIEIYeC6HrV6Eb86Q9zEFcNlA8boMX9psVp3EviFgzof8kRfBc_HDRA" alt="Emil Kraepelin" style="max-width: 180px; height: auto; margin-top: 5px;">
-      </div>
-      <div class="timeline-event">
-        <strong>1908:</strong> <p>Eugen Bleuler coins the term "schizophrenia."</p>
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfPtg-3t12Edl-yg8GgKOd1p49rB6PcsS3l60QKEIZyAWwrdn61cG_k3xBGOus52aoFKt3U0MDfLLxPVbeGtSe2w" alt="Eugen Bleuler" style="max-width: 180px; height: auto; margin-top: 5px;">
-      </div>
-      <div class="timeline-event">
-        <strong>Early-mid 1900s:</strong> <p>Lifetime confinement in asylums was common.</p>
-        <img src="https://media.npr.org/assets/img/2024/04/14/allison-building-sleeping-porch--1400x810.jpg?sfvrsn=e38692db_5" alt="Asylum" style="max-width: 600px; height: auto; margin-top: 5px;">
-      </div>
-      <div class="timeline-event">
-        <strong>1950s:</strong> <p>Discovery of first antipsychotic medication (Chlorpromazine).</p>
-        <img src="https://www.bap.org.uk/articles/wp-content/uploads/2016/10/publicinfo_chlorpromazine3.gif" alt="Chlorpromazine" style="max-width: 600px; height: auto; margin-top: 5px;">
-      </div>
-      <div class="timeline-event">
-        <strong>Late 20th Century:</strong> <p>Shift to de-institutionalization and community care.</p>
-        <img src="https://images.everydayhealth.com/images/emotional-health/schizophrenia/who-should-be-on-your-schizophrenia-care-team-alt-1440x810.jpg?sfvrsn=e38692db_5" alt="Community" style="max-width: 600px; height: auto; margin-top: 5px;">
-      </div>
-      <div class="timeline-event">
-        <strong>Late 20th/Early 21st Century:</strong> <p>Advances in neuroscience, understanding complex factors.</p>
-        <img src="https://images.newscientist.com/wp-content/uploads/2021/11/16123327/pri210550131.jpg" alt="Brain" style="max-width: 600px; height: auto; margin-top: 5px;">
-      </div>
-      <div class="timeline-event">
-        <strong>Today:</strong> <p>Schizophrenia understood as a complex, multifactorial spectrum.</p>
-        <img src="https://m.media-amazon.com/images/I/51CJu3t4PvL._AC_UF894,1000_QL80_.jpg" alt="Spectrum" style="max-width: 400px; height: auto; margin-top: 5px;">
-      </div>
-    </div>
-  </div>
-  <div>
-    <h2>Etiology: Causes and Risk Factors</h2>
-    <p>Schizophrenia is a complex condition, and the exact cause is unknown. There is no single simple cause. Instead, schizophrenia emerges from a complex interplay of biological, genetic, psychological, and environmental factors.</p>
-    
-    <div class="etiology-overlap">
-      <div id="biologicalFactor" class="factor biological">Biological</div>
-      <div id="geneticFactor" class="factor genetic">Genetic</div>
-      <div id="psychologicalFactor" class="factor psychological">Psychological</div>
-      <div id="environmentalFactor" class="factor environmental">Environmental</div>
-    </div>
-    <div id="etiologyInfo">
-    </div>
-  </div>
-</section>
-
-<section id="diagnosis" class="blog-section">
-  <div class="blog-content-wrapper">
-    <h1>Symptoms</h1>
-    <img src="https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2022/06/stages_schizophrenia_GettyImages1338339014_Header-1024x575.jpg?w=1155&h=1528" alt="Schizophrenia Symptoms" style="width: 100%; height: auto; margin: 20px 0;">  
-    <div class="info-block">
-      <p>📋 <strong>Psychosis</strong> is a collection of symptoms that are characterized by a loss of contact with reality.</p>
-    </div>
-    <p>Psychosis is the hallmark of schizophrenia. It is characterized by a disconnect between what a person sees, hears, or feels and what is actually there. This can manifest in various ways:</p>
-    <div class="symptoms-tabs">
-      <div class="tab">
-        <button class="tab-button" onclick="toggleTab('positive')">Positive symptoms</button>
-        <div id="positive" class="tab-content">
-          <div class="sub-tab">
-            <button class="sub-tab-button" onclick="toggleSubTab('hallucinations')">Hallucinations</button>
-            <div id="hallucinations" class="sub-tab-content">
-              <p>Hear, see, or feel things that are not there.</p>
-              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/N3jo-0bdSsY?si=LzUKt-ZZ4p5fsK5u&amp;start=274&amp;end=310" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <section id="background" style="padding: 20px; display: flex; flex-direction: column; align-items: center;">
+    <div class="subsection" id="history">
+      <div class="blog-content-wrapper">
+        <div>
+          <h2>A Brief History of Schizophrenia</h2>
+          <p>Schizophrenia has been documented for centuries under different names. Key figures such as Emil Kraepelin and Eugen Bleuler laid the foundation for what we know today.</p>
+          <div class="timeline">
+            <div class="timeline-event">
+              <strong>1896:</strong> <p>Emil Kraepelin classifies "dementia praecox."</p>
+              <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQz3eIldZ9Mp4fr5BWaMYnW4S0N2Ag7hdOqIEIYeC6HrV6Eb86Q9zEFcNlA8boMX9psVp3EviFgzof8kRfBc_HDRA" alt="Emil Kraepelin" style="max-width: 180px; height: auto; margin-top: 5px;">
+              <div class="figure-caption"><i>Note</i>. From <i>Emil Kraepelin</i> [Photograph], by Google Images, n.d. (<a href="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQz3eIldZ9Mp4fr5BWaMYnW4S0N2Ag7hdOqIEIYeC6HrV6Eb86Q9zEFcNlA8boMX9psVp3EviFgzof8kRfBc_HDRA">Link</a>)</div>
             </div>
-          </div>
-
-          <div class="sub-tab">
-            <button class="sub-tab-button" onclick="toggleSubTab('delusions')">Delusions</button>
-            <div id="delusions" class="sub-tab-content">
-              <p>Believing things that are not true.</p>
-              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/fJMOySCn5ho?si=Mbsv56X9lq9jSSfM&amp;start=307&amp;end=375" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="timeline-event">
+              <strong>1908:</strong> <p>Eugen Bleuler coins the term "schizophrenia."</p>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfPtg-3t12Edl-yg8GgKOd1p49rB6PcsS3l60QKEIZyAWwrdn61cG_k3xBGOus52aoFKt3U0MDfLLxPVbeGtSe2w" alt="Eugen Bleuler" style="max-width: 180px; height: auto; margin-top: 5px;">
+              <div class="figure-caption"><i>Note</i>. From <i>Eugen Bleuler</i> [Photograph], by Google Images, n.d. (<a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfPtg-3t12Edl-yg8GgKOd1p49rB6PcsS3l60QKEIZyAWwrdn61cG_k3xBGOus52aoFKt3U0MDfLLxPVbeGtSe2w">Link</a>)</div>
             </div>
-          </div>
-
-          <div class="sub-tab">
-            <button class="sub-tab-button" onclick="toggleSubTab('disorganizedSpeech')">Disorganized Thinking / Speech</button>
-            <div id="disorganizedSpeech" class="sub-tab-content">
-              <p>Speaking in a way that is hard to understand.</p>
-              <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/u2vMnyTiwp4?si=pQ5wCNBqKnLG5u1v&amp;start=19" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="timeline-event">
+              <strong>Early-mid 1900s:</strong> <p>Lifetime confinement in asylums was common.</p>
+                <img src="https://media.npr.org/assets/img/2017/07/05/allison-building-sleeping-porch-_custom-de6f30cdd0a1080b63322f979772e084211277e9.jpg" alt="Asylum" style="max-width: 600px; height: auto; margin-top: 5px;">
+                <div class="figure-caption"><i>Note</i>. From <i>Historical Asylum</i> [Photograph], by NPR, 2017 (<a href="https://media.npr.org/assets/img/2017/07/05/allison-building-sleeping-porch-_custom-de6f30cdd0a1080b63322f979772e084211277e9.jpg">Link</a>)</div>
             </div>
-          </div>
-
-          <div class="sub-tab">
-            <button class="sub-tab-button" onclick="toggleSubTab('disorganizedMovement')">Disorganized or Catatonic Behaviour</button>
-            <div id="disorganizedMovement" class="sub-tab-content">
-              <p>Disorganized behavior means difficulty organizing one's actions or behaving inappropriately – someone might neglect hygiene, wear bizarre outfits (like a winter coat in summer), or have unpredictable emotional outbursts.</p>
+            <div class="timeline-event">
+              <strong>1950s:</strong> <p>Discovery of first antipsychotic medication (Chlorpromazine).</p>
+              <img src="https://www.bap.org.uk/articles/wp-content/uploads/2016/10/publicinfo_chlorpromazine3.gif" alt="Chlorpromazine" style="max-width: 600px; height: auto; margin-top: 5px;">
+              <div class="figure-caption"><i>Note</i>. From <i>Chlorpromazine</i> [Online image], by British Association for Psychopharmacology, 2016 (<a href="https://www.bap.org.uk/articles/wp-content/uploads/2016/10/publicinfo_chlorpromazine3.gif">Link</a>)</div>
             </div>
-          </div>
-
-          <div class="sub-tab">
-            <button class="sub-tab-button" onclick="toggleSubTab('catatonicSymptoms')">Catatonic Symptoms</button>
-            <div id="catatonicSymptoms" class="sub-tab-content">
-              <p>Catatonic symptoms are at the extreme end of disorganized behavior: the person might become very rigid, unresponsive, or hold strange postures for extended periods, or alternatively, exhibit purposeless excessive movement.</p>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/zAEJ-Jvndms?si=d7pjYzLY5TfH29oI&amp;end=24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="timeline-event">
+              <strong>Late 20th Century:</strong> <p>Shift to de-institutionalization and community care.</p>
+              <img src="https://images.everydayhealth.com/images/emotional-health/schizophrenia/who-should-be-on-your-schizophrenia-care-team-alt-1440x810.jpg?sfvrsn=e38692db_5" alt="Community" style="max-width: 600px; height: auto; margin-top: 5px;">
+              <div class="figure-caption"><i>Note</i>. From <i>Community Care Team</i> [Online image], by Everyday Health, n.d. (<a href="https://images.everydayhealth.com/images/emotional-health/schizophrenia/who-should-be-on-your-schizophrenia-care-team-alt-1440x810.jpg?sfvrsn=e38692db_5">Link</a>)</div>
+            </div>
+            <div class="timeline-event">
+              <strong>Late 20th/Early 21st Century:</strong> <p>Advances in neuroscience, understanding complex factors.</p>
+              <img src="https://images.newscientist.com/wp-content/uploads/2021/11/16123327/pri210550131.jpg" alt="Brain" style="max-width: 600px; height: auto; margin-top: 5px;">
+              <div class="figure-caption"><i>Note</i>. From <i>Brain Research</i> [Online image], by New Scientist, 2021 (<a href="https://images.newscientist.com/wp-content/uploads/2021/11/16123327/pri210550131.jpg">Link</a>)</div>
+            </div>
+            <div class="timeline-event">
+              <strong>Today:</strong> <p>Schizophrenia understood as a complex, multifactorial spectrum.</p>
+              <img src="https://i.quotev.com/tbjt6pskkziq.jpg" alt="Spectrum" style="max-width: 400px; height: auto; margin-top: 5px;">
+              <div class="figure-caption"><i>Note</i>. From <i>Colour Wheel</i> [Online image], by Quotev, n.d. (<a href="https://i.quotev.com/tbjt6pskkziq.jpg">Link</a>)</div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="tab">
-        <button class="tab-button" onclick="toggleTab('negative')">Negative symptoms</button>
-        <div id="negative" class="tab-content">
-          <ul>
-            <li>Reduced emotional expression</li>
-            <li>Lack of motivation</li>
-            <li>Social withdrawal</li>
-            <li>Diminished speech</li>
-            <li>Inability to experience pleasure (anhedonia)</li>
-          </ul>
-        </div>
-      </div>
+    <div class="subsection" id="prevalence">
+      <div class="blog-content-wrapper">
+        <div>
+          <h2>Prevalence and Demographics</h2>
+          <div class="info-block">
+            <p>💣 <strong>Myth Busters</strong> </p>
+            <p> <strong>Myth 1 Busted:</strong> Schizophrenia is <strong>NOT</strong> rare.</p>
+          </div>
 
-      <div class="tab">
-        <button class="tab-button" onclick="toggleTab('cognitive')">Cognitive symptoms</button>
-        <div id="cognitive" class="tab-content">
-          <p>Impaired attention, memory, and executive function</p>
+          <p>Schizophrenia affects about 0.3%–0.7% of the population worldwide. The disorder typically manifests in late adolescence or early adulthood, with slightly higher rates in urban areas and among certain demographic groups.</p>
+          
+          <div class="prevalence-flex-container">
+            <div class="prevalence-row">
+              <div class="prevalence-image">
+                <img src="https://png.pngtree.com/png-vector/20220610/ourmid/pngtree-detailed-world-map-isolated-on-white-background-png-image_4869650.png" alt="World map silhouette" style="max-width: 250px; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+              </div>
+              <div class="prevalence-text">
+                <span style="font-size: 1.1em;"><strong>Worldwide:</strong> <br><em>~ 1 in 300</em><br><em>&gt; 20M</em></span>
+              </div>
+              <div class="figure-caption"><i>Note</i>. From <i>World Map Silhouette</i> [Clipart], by PNG Tree, 2022 (<a href="https://png.pngtree.com/png-vector/20220610/ourmid/pngtree-detailed-world-map-isolated-on-white-background-png-image_4869650.png">Link</a>)</div>
+            </div>
+            <div class="prevalence-row">
+              <div class="prevalence-text">
+                <span style="font-size: 1.1em;"><strong>Australia:</strong> <br><em>~ 1 in 100</em><br><em>~ 150–200K</em></span>
+              </div>
+              <div class="prevalence-image">
+                <img src="https://static.vecteezy.com/system/resources/thumbnails/017/745/234/small/doodle-freehand-drawing-of-australia-map-free-png.png" alt="Australia map clipart" style="max-width: 250px; width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+              </div>
+              <div class="figure-caption"><i>Note</i>. From <i>Australia Map</i> [Clipart], by Vecteezy, n.d. (<a href="https://static.vecteezy.com/system/resources/thumbnails/017/745/234/small/doodle-freehand-drawing-of-australia-map-free-png.png">Link</a>)</div>
+            </div>
+          </div>
+
+          <div class="research-figure">
+            <p>The typical age of onset is late teens to mid-20s for men, and a little later — early adulthood — for women.</p>
+            <img src="https://www.researchgate.net/profile/Jordan-Ramsey-2/publication/304266719/figure/fig6/AS:425557956534284@1478472331928/Male-and-female-age-at-onset-distributions-for-schizophrenia-in-the-WHO-Determinants-of.png" 
+                alt="Male and female age at onset distributions for schizophrenia" 
+                class="research-image">
+            <p class="figure-caption"><i>Note</i>. From <i>Male and Female Age at Onset Distributions for Schizophrenia</i>, by Ramsey, J. M., 2016 (<a href="https://www.researchgate.net/profile/Jordan-Ramsey-2/publication/304266719/figure/fig6/AS:425557956534284@1478472331928/Male-and-female-age-at-onset-distributions-for-schizophrenia-in-the-WHO-Determinants-of.png">Link</a>)</div>
+          </div>
+
+          <p>
+            Early mortality is linked to <strong>suicide</strong>, <strong>inequitable care</strong>, and <strong>lifestyle diseases</strong>.
+          </p>
+          <div class="life-expectancy">
+            
+            <div>
+              <img src="https://svgsilh.com/svg/1299985.svg" alt="General Population">
+              <p><strong>General Population</strong><br>~ 82 years</p>
+              <div class="figure-caption"><i>Note</i>. From <i>General Population Icon</i> [Clipart], by SVGSILH, n.d. (<a href="https://svgsilh.com/svg/1299985.svg">Link</a>)</div>
+            </div>
+            <div>
+              <img src="https://static.thenounproject.com/png/1000160-200.png" alt="Schizophrenia Patient">
+              <p><strong>With Schizophrenia</strong><br>~ 67–72 years</p>
+              <div class="figure-caption"><i>Note</i>. From <i>Schizophrenia Patient Icon</i> [Clipart], by The Noun Project, n.d. (<a href="https://static.thenounproject.com/png/1000160-200.png">Link</a>)</div>
+            </div>
+          </div>
+          
+          
         </div>
       </div>
     </div>
-    <h2>Stages of Schizophrenia</h2>
-    <h3>#1: Prodromal stage</h3>
-    <p>The prodromal stage is characterized by subtle changes in behavior and mood. 
-      It is a time when the person is beginning to experience symptoms of schizophrenia, but they are not yet severe enough to be noticed, 
-      which makes it difficult to identify. Some symptoms include yet not limited to: social isolation, irritability, difficulty concentrating, and sleep disturbances.</p>
-    <h3>#2 Active stage</h3>
-    <p>This is the acute phase of schizophrenia, where the person experiences the core symptoms of psychosis such as hallucinations and delusions.</p>
-    <h3>#3 Residual stage</h3>
-    <p>Residual schizophrenia refers to a phase with reduced or less severe symptoms compared to the active (psychotic) phase.
-      At this stage, the positive symptoms are typically absent.
-      The person is likely to be experiencing negative symptoms, low motivation, low energy, depressed mood and so on.
-      DSM-5-TR Update: The residual phase is no longer used for diagnostic purposes, but still useful clinically to describe symptom patterns in schizophrenia.
-    </p>
 
-    <h1>DSM-5 Diagnosis</h1>
-    <p><strong>To diagnose schizophrenia, the following criteria (A–F) must be met:</strong></p>
-    <div class="info-block">
-      <p>📝 <strong>Quick Summary:</strong></p>
-      <ul>
-        <li><strong>≥2 characteristic symptoms</strong> (delusions, hallucinations, disorganized speech) for <strong>≥1 month</strong></li>
-        <li><strong>≥6 months</strong> continuous signs of disturbance</li>
-        <li><strong>Significant functional decline</strong> in work, relationships, or self-care</li>
-        <li><strong>Rule out</strong> mood disorders, substance use, and medical conditions</li>
-      </ul>
+    <div class="subsection" id="schizophrenia-vs-did">
+      <div class="blog-content-wrapper">
+        <h2>Schizophrenia vs. Dissociative Identity Disorder (DID)</h2>
+        <div class="info-block">
+          <p>💣 <strong>Myth Busters</strong> </p>
+          <p><strong>Myth 2 Busted:</strong> Schizophrenia <strong>DOES NOT</strong> mean split personalities.</p>
+        </div>
+          <div class="card">
+            <div class="content-column">
+                <p>What does she have?</p>
+                <iframe width="560" height="290" src="https://www.youtube-nocookie.com/embed/e9tLy9NGHW4?si=VFAhEX9NXYQGVv3n&amp;start=506&amp;end=563&amp;modestbranding=1&amp;rel=0&amp;showinfo=0&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <p>What does he have?</p>
+                <iframe width="560" height="290" src="https://www.youtube-nocookie.com/embed/1SUgwKt_iFc?si=BP03aWw9jhB9iUUB&amp;end=20&amp;modestbranding=1&amp;rel=0&amp;showinfo=0&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+          </div>
+      </div>
     </div>
 
-    <details>
-      <summary>A. Characteristic Symptoms</summary>
-      <div class="details-content">
-        <p>Two (or more) of the following, each present for a significant portion of time during a 1-month period (or less if successfully treated).
-        <strong>At least one</strong> must be (1), (2), or (3):</p>
-        <ol>
-          <li>Delusions</li>
-          <li>Hallucinations</li>
-          <li>Disorganized speech (e.g., frequent derailment or incoherence)</li>
-          <li>Grossly disorganized or catatonic behavior</li>
-          <li>Negative symptoms (e.g., diminished emotional expression or avolition)</li>
-        </ol>
-      </div>
-    </details>
-
-    <details>
-      <summary>B. Social/Occupational Dysfunction</summary>
-      <div class="details-content">
-        <p>For a significant portion of the time since onset, level of functioning in one or more major areas such as work, interpersonal relations, or self-care is markedly below the level achieved prior to onset.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>C. Duration</summary>
-      <div class="details-content">
-        <p>Continuous signs of the disturbance persist for at least 6 months. This 6-month period must include at least 1 month of symptoms that meet Criterion A (active-phase symptoms) and may include periods of prodromal or residual symptoms.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>D. Schizoaffective and Mood Disorder Exclusion</summary>
-      <div class="details-content">
-        <p>Schizoaffective disorder and depressive or bipolar disorder with psychotic features have been ruled out because either:</p>
-        <ul>
-          <li>No major depressive or manic episodes have occurred concurrently with the active-phase symptoms; or</li>
-          <li>If mood episodes have occurred during active-phase symptoms, they have been present for a minority of the total duration.</li>
-        </ul>
-      </div>
-    </details>
-
-    <details>
-      <summary>E. Substance/Medical Condition Exclusion</summary>
-      <div class="details-content">
-        <p>The disturbance is not attributable to the physiological effects of a substance or another medical condition.</p>
-      </div>
-    </details>
-
-    <details>
-      <summary>F. Autism Spectrum Disorder Exclusion</summary>
-      <div class="details-content">
-        <p>If there is a history of autism spectrum disorder or a communication disorder of childhood onset, a diagnosis of schizophrenia is made only if prominent delusions or hallucinations are also present for at least 1 month (or less if successfully treated).</p>
-      </div>
-    </details>
-  
-    <h1>Diagnostic Challenges in Schizophrenia</h1>
-    <details>
-      <summary>No definitive lab tests or brain scans</summary>
-      <div class="details-content">
-        <ol>
-          <li>Schizophrenia is diagnosed clinically, based on observed symptoms and illness course.</li>
-          <li>Diagnosis relies on interviews with the patient and family and careful observation over time.</li>
-        </ol>
-      </div>
-    </details>
-    
-    <details>
-      <summary>Early-stage uncertainty</summary>
-        <div class="details-content">
-          <ol>
-            <li>In the first few weeks or months, it may be unclear whether the case is:</li>
-            <ul>
-              <li>Schizophrenia</li>
-              <li>A brief psychotic episode</li>
-              <li>Mood-related psychosis</li>
-            </ul>
-            <li>Clinicians may delay diagnosis until the clinical picture becomes clearer.</li>
-          </ol>
+    <div class="subsection" id="etiology">
+      <div class="blog-content-wrapper">
+        <h2>Etiology: Causes and Risk Factors</h2>
+        <div class="info-block">
+          <p>💣 <strong>Myth Busters</strong> </p>
+          <p> <strong>Myth 3 Busted:</strong> Bad parenting does <strong>NOT</strong> cause Schizophrenia.</p>
+          <p> <strong>Myth 4 Busted:</strong> Parents having Schizophrenia does <strong>NOT</strong> mean their children will get it.</p>
         </div>
-    </details>
-
-    <details>
-      <summary>Symptom Overlap with Other Disorders</summary>
-        <div class="details-content">
-          <ol>
-            <li>Severe depression</li>
-            <ul>
-              <li>Can cause delusional guilt or even hallucinations.</li>
-            </ul>
-            <li>Bipolar mania</li>
-            <ul>
-              <li>May include psychotic features such as grandiosity or hallucinations.</li>
-            </ul>
-            <li>Drug-induced psychosis</li>
-            <ul>
-              <li>Methamphetamine use or other substance intoxication can mimic schizophrenia symptoms in the short term.</li>
-            </ul>
-            <li>Conclusion:</li>
-            <ul>
-              <li>Diagnosing schizophrenia requires evaluating:</li>
-              <li>Symptom duration</li>
-              <li>Context (e.g., presence or absence of drug use)</li>
-              <li>Mood symptoms</li>
-            </ul>
-            <li>Clinicians must "piece together the puzzle" carefully.</li>
-          </ol>
+        <p>Schizophrenia is a complex condition, and the exact cause is unknown. There is no single simple cause. Instead, schizophrenia emerges from a complex interplay of biological, genetic, psychological, and environmental factors.</p>
+        
+        <div class="etiology-overlap">
+          <div id="biologicalFactor" class="factor biological">Biological</div>
+          <div id="geneticFactor" class="factor genetic">Genetic</div>
+          <div id="psychologicalFactor" class="factor psychological">Psychological</div>
+          <div id="environmentalFactor" class="factor environmental">Environmental</div>
         </div>
-    </details>
-    
-    <details>
-      <summary>Comorbid Conditions and Limited Insight</summary>
-      <div class="details-content">
-        <ul>
-          <li><strong>Comorbidities are common</strong>
-            <ul>
-              <li>Anxiety disorders</li>
-              <li>Depression</li>
-              <li>Substance abuse</li>
-            </ul>
-          </li>
-          <li>These can <strong>muddy the clinical picture</strong>, making diagnosis more complex.</li>
-          <li><strong>Limited insight</strong>
-            <ul>
-              <li>Patients may <strong>not report hallucinations or delusions</strong>, especially early on, due to:
-                <ul>
-                  <li><strong>Fear</strong></li>
-                  <li><strong>Paranoia</strong></li>
-                  <li><strong>Distrust</strong></li>
-                </ul>
-              </li>
-              <li>Families may only notice a person has <strong>"changed"</strong>, without understanding the cause.</li>
-            </ul>
-          </li>
-        </ul>
+        <div id="etiologyInfo">
+        </div>
       </div>
-    </details>
-    
-    <details>
-      <summary>Diagnostic Delay and Its Causes</summary>
-      <div class="details-content">
-        <ul>
-          <li>Diagnosis often occurs <strong>months or even a year or more</strong> after symptom onset.</li>
-          <li><strong>Contributing factors</strong>:
-            <ul>
-              <li><strong>Diagnostic complexity</strong></li>
-              <li><strong>Social stigma</strong>, which may lead families to <strong>avoid seeking psychiatric help</strong></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </details>
-    
-    <details>
-      <summary>The Diagnostic Process</summary>
-      <div class="details-content">
-        <ul>
-          <li>Mental health professionals are trained to:
-            <ul>
-              <li>Recognize <strong>schizophrenia symptom patterns</strong></li>
-              <li>Conduct <strong>thorough interviews</strong></li>
-              <li>Use <strong>psychological tests</strong> or <strong>standardized questionnaires</strong> when needed</li>
-            </ul>
-          </li>
-          <li>A clear diagnosis helps shape an <strong>appropriate treatment plan</strong>.</li>
-        </ul>
-      </div>
-    </details>
-    
-    <details>
-      <summary>Schizophrenia as a Spectrum Disorder</summary>
-      <div class="details-content">
-        <ul>
-          <li>Schizophrenia is <strong>not all-or-nothing</strong>; it exists on a <strong>spectrum</strong>.</li>
-          <li><strong>Variability in symptom patterns and outcomes</strong>:
-            <ul>
-              <li>Some individuals have <strong>severe, chronic symptoms</strong></li>
-              <li>Others may:
-                <ul>
-                  <li>Have <strong>one or two episodes</strong> then recover</li>
-                  <li>Show mainly <strong>negative symptoms</strong> (e.g., lack of motivation) with few positive symptoms</li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li>Hence, the term <strong>"schizophrenia spectrum disorders"</strong> is often used.</li>
-        </ul>
-      </div>
-    </details>
-    
-    <details>
-      <summary>Hope and Recovery</summary>
-      <div class="details-content">
-        <ul>
-          <li><strong>Outcomes vary</strong>, even for those with full schizophrenia diagnoses.</li>
-          <li>With <strong>support and treatment</strong>:
-            <ul>
-              <li>Many people can live <strong>fulfilling lives</strong>.</li>
-              <li><strong>Success stories exist</strong> but are underrepresented in media.</li>
-            </ul>
-          </li>
-          <li><strong>Important reminder</strong>:
-            <ul>
-              <li>A diagnosis of schizophrenia is <strong>serious</strong>, but <strong>not the end of one's aspirations</strong>.</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </details>
+    </div>
   </section>
 
-<section id="treatment">
-  <div class="blog-content-wrapper">
-    <h1>Treatment & Management</h1>
+  <section id="diagnosis" class="blog-section">
+    <div class="blog-content-wrapper" id="diagnosis-main">
+      <img src="https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2022/06/stages_schizophrenia_GettyImages1338339014_Header-1024x575.jpg?w=1155&h=1528" alt="Schizophrenia Symptoms" style="width: 100%; height: auto; margin: 20px 0;">  
+      <div class="figure-caption"><i>Note</i>. From <i>Schizophrenia Symptoms</i> [Online image], by Medical News Today, 2022 (<a href="https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2022/06/stages_schizophrenia_GettyImages1338339014_Header-1024x575.jpg">Link</a>)</div>
+    </div>
+
+    <div class="subsection" id="symptoms">
+      <div class="blog-content-wrapper">
+        <h1>Symptoms</h1>
+        <h2>Patients with Schizophrenia</h2>
+        <div class="patient-quotes">
+          <div class="quote">
+            <h4>"I heard a voice of all of a sudden just yelled 'I got you' and then that made me jump."</h4>
+            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/N3jo-0bdSsY?si=LzUKt-ZZ4p5fsK5u&amp;start=274&amp;end=310" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="figure-caption"><i>Note</i>. From <i>Hearing Voices: A Personal Account</i> [Video], by Schizoin Through Life, 2018 (<a href="https://www.youtube-nocookie.com/embed/N3jo-0bdSsY?si=LzUKt-ZZ4p5fsK5u&amp;start=274&amp;end=310">Link</a>)</div>
+          </div>
+          <div class="quote">
+            <h4>"I have no feeling in my body.""I am in relation with Fairy King""I had magical powers and I could make people disappear"</h4>
+            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/fJMOySCn5ho?si=Mbsv56X9lq9jSSfM&amp;start=307&amp;end=375" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="figure-caption"><i>Note</i>. From <i>Delusions and Magical Thinking in Schizophrenia</i> [Video], by Recap Radio, 2019 (<a href="https://www.youtube-nocookie.com/embed/fJMOySCn5ho?si=Mbsv56X9lq9jSSfM&amp;start=307&amp;end=375">Link</a>)</div>
+          </div>
+          <div class="quote">
+            <h4>Word Salad</h4>
+            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/u2vMnyTiwp4?si=pQ5wCNBqKnLG5u1v&amp;start=19" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="figure-caption"><i>Note</i>. From <i>Disorganized Speech in Schizophrenia</i> [Video], by ONE Interpreting, 2015 (<a href="https://www.youtube-nocookie.com/embed/u2vMnyTiwp4?si=pQ5wCNBqKnLG5u1v&amp;start=19">Link</a>)</div>
+          </div>
+        </div>
+        <div class="info-block">
+          <p>📋 <strong>Psychosis</strong> is a collection of symptoms that are characterized by a loss of contact with reality.</p>
+        </div>
+        <p>Psychosis is the hallmark of schizophrenia. It is characterized by a disconnect between what a person sees, hears, or feels and what is actually there. This can manifest in various ways:</p>
+        
+        <div class="symptoms-tabs">
+          <div class="tab">
+            <button class="tab-button" onclick="toggleTab('positive')">Positive symptoms</button>
+            <div id="positive" class="tab-content">
+              <div class="sub-tab">
+                <button class="sub-tab-button" onclick="toggleSubTab('hallucinations')">Hallucinations</button>
+                <div id="hallucinations" class="sub-tab-content">
+                  <p>Hear, see, or feel things that are not there.</p>
+                  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/N3jo-0bdSsY?si=LzUKt-ZZ4p5fsK5u&amp;start=274&amp;end=310" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+
+              <div class="sub-tab">
+                <button class="sub-tab-button" onclick="toggleSubTab('delusions')">Delusions</button>
+                <div id="delusions" class="sub-tab-content">
+                  <p>Believing things that are not true.</p>
+                  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/fJMOySCn5ho?si=Mbsv56X9lq9jSSfM&amp;start=307&amp;end=375" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+
+              <div class="sub-tab">
+                <button class="sub-tab-button" onclick="toggleSubTab('disorganizedSpeech')">Disorganized Thinking / Speech</button>
+                <div id="disorganizedSpeech" class="sub-tab-content">
+                  <p>Speaking in a way that is hard to understand.</p>
+                  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/u2vMnyTiwp4?si=pQ5wCNBqKnLG5u1v&amp;start=19" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              </div>
+
+              <div class="sub-tab">
+                <button class="sub-tab-button" onclick="toggleSubTab('disorganizedMovement')">Grossly Disorganised or Catatonic Behavior</button>
+                <div id="disorganizedMovement" class="sub-tab-content">
+                  <p>Disorganized behavior means difficulty organizing one's actions or behaving inappropriately – someone might neglect hygiene, wear bizarre outfits (like a winter coat in summer), or have unpredictable emotional outbursts.</p>
+                  <h4>Catatonic Symptoms</h4>
+                  <p>Catatonic symptoms are at the extreme end of disorganized behavior: the person might become very rigid, unresponsive, or hold strange postures for extended periods, or alternatively, exhibit purposeless excessive movement.</p>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/zAEJ-Jvndms?si=d7pjYzLY5TfH29oI&amp;end=24" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                  <div class="figure-caption"><i>Note</i>. From <i>Catatonic Symptoms in Schizophrenia</i> [Video], by Dr. Edson Zerati, 2010 (<a href="https://www.youtube-nocookie.com/embed/zAEJ-Jvndms?si=d7pjYzLY5TfH29oI&amp;end=24">Link</a>)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab">
+            <button class="tab-button" onclick="toggleTab('negative')">Negative symptoms</button>
+            <div id="negative" class="tab-content">
+              <ul>
+                <li>Reduced emotional expression</li>
+                <li>Lack of motivation</li>
+                <li>Social withdrawal</li>
+                <li>Diminished speech</li>
+                <li>Inability to experience pleasure (anhedonia)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tab">
+            <button class="tab-button" onclick="toggleTab('cognitive')">Cognitive symptoms</button>
+            <div id="cognitive" class="tab-content">
+              <p>Impaired attention, memory, and executive function</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection" id="phases">
+      <div class="blog-content-wrapper">
+        <h1>Phases</h1>
+        <h3>#1: Prodromal phase</h3>
+        <p>The prodromal stage is characterized by subtle changes in behavior and mood. 
+          It is a time when the person is beginning to experience symptoms of schizophrenia, but they are not yet severe enough to be noticed, 
+          which makes it difficult to identify. Some symptoms include yet not limited to: social isolation, irritability, difficulty concentrating, and sleep disturbances.</p>
+        <h3>#2 Active phase</h3>
+        <p>This is the acute phase of schizophrenia, where the person experiences the core symptoms of psychosis such as hallucinations and delusions.</p>
+        <h3>#3 Residual phase</h3>
+        <p>Residual schizophrenia refers to a phase with reduced or less severe symptoms compared to the active (psychotic) phase.
+          At this stage, the positive symptoms are typically absent.
+          The person is likely to be experiencing negative symptoms, low motivation, low energy, depressed mood and so on.
+          DSM-5-TR Update: The residual phase is no longer used for diagnostic purposes, but still useful clinically to describe symptom patterns in schizophrenia.
+        </p>
+      </div>
+    </div>
+
+    <div class="subsection" id="dsm5">
+      <div class="blog-content-wrapper">
+        <h1>DSM-5 Criteria</h1>
+        <p><strong>To diagnose schizophrenia, the following criteria (A–F) must be met:</strong></p>
+        <div class="info-block">
+          <p>📝 <strong>Quick Summary:</strong></p>
+          <ul>
+            <li>At least 2 characteristic symptoms (one must be hallucinations, delusions, or disorganized speech) for a significant portion of one month.</li>
+            <li>Functional decline in work, relationships, or self-care.</li>
+            <li>Continuous disturbance for at least 6 months, with at least 1 month of active symptoms.</li>
+            <li>Rule out mood disorders, substance use, and medical conditions.</li>
+          </ul>
+        </div>
+
+        <details>
+          <summary>A. Characteristic Symptoms</summary>
+          <div class="details-content">
+            <p>Two (or more) of the following, each present for a significant portion of time during a 1-month period (or less if successfully treated).
+            <strong>At least one</strong> must be (1), (2), or (3):</p>
+            <ol>
+              <li>Delusions</li>
+              <li>Hallucinations</li>
+              <li>Disorganized speech (e.g., frequent derailment or incoherence)</li>
+              <li>Grossly disorganized or catatonic behavior</li>
+              <li>Negative symptoms (e.g., diminished emotional expression or avolition)</li>
+            </ol>
+          </div>
+        </details>
+
+        <details>
+          <summary>B. Social/Occupational Dysfunction</summary>
+          <div class="details-content">
+            <p>For a significant portion of the time since onset, level of functioning in one or more major areas such as work, interpersonal relations, or self-care is markedly below the level achieved prior to onset.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>C. Duration</summary>
+          <div class="details-content">
+            <p>Continuous signs of the disturbance persist for at least 6 months. This 6-month period must include at least 1 month of symptoms that meet Criterion A (active-phase symptoms) and may include periods of prodromal or residual symptoms.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>D. Schizoaffective and Mood Disorder Exclusion</summary>
+          <div class="details-content">
+            <p>Schizoaffective disorder and depressive or bipolar disorder with psychotic features have been ruled out because either:</p>
+            <ul>
+              <li>No major depressive or manic episodes have occurred concurrently with the active-phase symptoms; or</li>
+              <li>If mood episodes have occurred during active-phase symptoms, they have been present for a minority of the total duration.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>E. Substance/Medical Condition Exclusion</summary>
+          <div class="details-content">
+            <p>The disturbance is not attributable to the physiological effects of a substance or another medical condition.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>F. Autism Spectrum Disorder Exclusion</summary>
+          <div class="details-content">
+            <p>If there is a history of autism spectrum disorder or a communication disorder of childhood onset, a diagnosis of schizophrenia is made only if prominent delusions or hallucinations are also present for at least 1 month (or less if successfully treated).</p>
+          </div>
+        </details>
+        <h2> Key Changes in DSM-V (vs DSM-IV)</h2>
+        <ul>
+          <li> 🔑 <strong>Instead of distinct categories, the DSM-5 now emphasizes a dimensional approach</strong> which means clinicians assess the severity of different symptom dimensions allowing for a more nuanced understanding of each individual's unique presentation of schizophrenia. -> The term "schizophrenia spectrum" is used as the overarching category for this group of disorders (including schizophreniform, schizoaffective, etc.), the diagnosis of schizophrenia itself is now </li>
+          <li>For a diagnosis of schizophreniform disorder, at least one of the delusions, hallucinations, or disorganized thinking/speech symptoms must be present.</li>
+          <li>Adding and removing the stipulation and note in Criterion A</li>
+          <li>Adding a criterion requiring clinically significant distress or impairment for the diagnoses of psychotic disorder due to another medical condition, and substance/medicationinduced psychotic disorder</li>
+        </ul>
+        
+        <div class="info-block">
+          <p>💣 <strong>Myth Busters</strong> </p>
+          <p> <strong>Myth 5 Busted:</strong> Schizophrenia <strong>DOES NOT</strong> mean people are violent or dangerous.</p>
+          <p> <strong>Myth 6 Busted:</strong> Schizophrenia <strong>DOES NOT</strong> mean people are not smart.</p>
+          <p> <strong>Myth 7 Busted:</strong> <strong>NOT</strong> all schizophrenics experience hallucinations and delusions.</p>
+        </div>
+      
+        <h1>Diagnostic Challenges in Schizophrenia</h1>
+        <details>
+          <summary>No definitive lab tests or brain scans</summary>
+          <div class="details-content">
+            <ol>
+              <li>Schizophrenia is diagnosed clinically, based on observed symptoms and illness course.</li>
+              <li>Diagnosis relies on interviews with the patient and family and careful observation over time.</li>
+            </ol>
+          </div>
+        </details>
+        
+        <details>
+          <summary>Early-stage uncertainty</summary>
+            <div class="details-content">
+              <ol>
+                <li>In the first few weeks or months, it may be unclear whether the case is:</li>
+                <ul>
+                  <li>Schizophrenia</li>
+                  <li>A brief psychotic episode</li>
+                  <li>Mood-related psychosis</li>
+                </ul>
+                <li>Clinicians may delay diagnosis until the clinical picture becomes clearer.</li>
+              </ol>
+            </div>
+        </details>
+
+        <details>
+          <summary>Symptom Overlap with Other Disorders</summary>
+            <div class="details-content">
+              <ol>
+                <li>Severe depression</li>
+                <ul>
+                  <li>Can cause delusional guilt or even hallucinations.</li>
+                </ul>
+                <li>Bipolar mania</li>
+                <ul>
+                  <li>May include psychotic features such as grandiosity or hallucinations.</li>
+                </ul>
+                <li>Drug-induced psychosis</li>
+                <ul>
+                  <li>Methamphetamine use or other substance intoxication can mimic schizophrenia symptoms in the short term.</li>
+                </ul>
+                <li>Conclusion:</li>
+                <ul>
+                  <li>Diagnosing schizophrenia requires evaluating:</li>
+                  <li>Symptom duration</li>
+                  <li>Context (e.g., presence or absence of drug use)</li>
+                  <li>Mood symptoms</li>
+                </ul>
+                <li>Clinicians must "piece together the puzzle" carefully.</li>
+              </ol>
+            </div>
+        </details>
+        
+        <details>
+          <summary>Comorbid Conditions and Limited Insight</summary>
+          <div class="details-content">
+            <ul>
+              <li><strong>Comorbidities are common</strong>
+                <ul>
+                  <li>Anxiety disorders</li>
+                  <li>Depression</li>
+                  <li>Substance abuse</li>
+                </ul>
+              </li>
+              <li>These can <strong>muddy the clinical picture</strong>, making diagnosis more complex.</li>
+              <li><strong>Limited insight</strong>
+                <ul>
+                  <li>Patients may <strong>not report hallucinations or delusions</strong>, especially early on, due to:
+                    <ul>
+                      <li><strong>Fear</strong></li>
+                      <li><strong>Paranoia</strong></li>
+                      <li><strong>Distrust</strong></li>
+                    </ul>
+                  </li>
+                  <li>Families may only notice a person has <strong>"changed"</strong>, without understanding the cause.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </details>
+        
+        <details>
+          <summary>Diagnostic Delay and Its Causes</summary>
+          <div class="details-content">
+            <ul>
+              <li>Diagnosis often occurs <strong>months or even a year or more</strong> after symptom onset.</li>
+              <li><strong>Contributing factors</strong>:
+                <ul>
+                  <li><strong>Diagnostic complexity</strong></li>
+                  <li><strong>Social stigma</strong>, which may lead families to <strong>avoid seeking psychiatric help</strong></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </details>
+        
+        <details>
+          <summary>The Diagnostic Process</summary>
+          <div class="details-content">
+            <ul>
+              <li>Mental health professionals are trained to:
+                <ul>
+                  <li>Recognize <strong>schizophrenia symptom patterns</strong></li>
+                  <li>Conduct <strong>thorough interviews</strong></li>
+                  <li>Use <strong>psychological tests</strong> or <strong>standardized questionnaires</strong> when needed</li>
+                </ul>
+              </li>
+              <li>A clear diagnosis helps shape an <strong>appropriate treatment plan</strong>.</li>
+            </ul>
+          </div>
+        </details>
+        
+        <details>
+          <summary>Schizophrenia as a Spectrum Disorder</summary>
+          <div class="details-content">
+            <ul>
+              <li>Schizophrenia is <strong>not all-or-nothing</strong>; it exists on a <strong>spectrum</strong>.</li>
+              <li><strong>Variability in symptom patterns and outcomes</strong>:
+                <ul>
+                  <li>Some individuals have <strong>severe, chronic symptoms</strong></li>
+                  <li>Others may:
+                    <ul>
+                      <li>Have <strong>one or two episodes</strong> then recover</li>
+                      <li>Show mainly <strong>negative symptoms</strong> (e.g., lack of motivation) with few positive symptoms</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Hence, the term <strong>"schizophrenia spectrum disorders"</strong> is often used.</li>
+            </ul>
+          </div>
+        </details>
+        
+        <details>
+          <summary>Hope and Recovery</summary>
+          <div class="details-content">
+            <ul>
+              <li><strong>Outcomes vary</strong>, even for those with full schizophrenia diagnoses.</li>
+              <li>With <strong>support and treatment</strong>:
+                <ul>
+                  <li>Many people can live <strong>fulfilling lives</strong>.</li>
+                  <li><strong>Success stories exist</strong> but are underrepresented in media.</li>
+                </ul>
+              </li>
+              <li><strong>Important reminder</strong>:
+                <ul>
+                  <li>A diagnosis of schizophrenia is <strong>serious</strong>, but <strong>not the end of one's aspirations</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="treatment" class="blog-section">
+  <div class="blog-content-wrapper" id="treatment-main">
     <img src="https://media.istockphoto.com/id/1322211571/vector/group-therapy-addiction-treatment-concept-characters-counseling-with-psychologist-on.jpg?s=612x612&w=0&k=20&c=moDxi4u07wOzgiiuS2HK66dJzpsfRHkIk1ITTI5NbeE=" alt="Treatment" style="width: 100%; height: auto; margin: 20px 0;">  
-    <p>While there's no cure for schizophrenia yet, effective treatments are available in helping patients manage symptoms, reduce relapses, and improve functioning. 
-      Early identification and intervention may prevent or delay schizophrenia development and improve overall quality of life.</p>
-    
-    <h2>Medications</h2>
-    <p>Antipsychotic medications are the cornerstone of treatment:</p>
-    <img src="https://ourworldindata.org/cdn-cgi/imagedelivery/qLq-8BTgXU8yG0N6HnOy8g/8b0c0fa4-d146-4d13-d62e-083556a25f00/w=1350" 
-         alt="Development of Antipsychotic Medications" 
-         class="zoomable-image" 
-         style="width: 100%; height: auto;"
-         onclick="openModal(this)">
-    
-    <!-- Modal -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-      <img class="modal-content" id="modalImage">
-    </div>
+    <div class="figure-caption"><i>Note</i>. Group Therapy Addiction Treatment Concept From <i>iStock</i> [Online image], by Unknown, n.d. (<a href="https://media.istockphoto.com/id/1322211571/vector/group-therapy-addiction-treatment-concept-characters-counseling-with-psychologist-on.jpg?s=612x612&w=0&k=20&c=moDxi4u07wOzgiiuS2HK66dJzpsfRHkIk1ITTI5NbeE=">Link</a>)</div>
+  </div>
 
-    <h3>Medication Types</h3>
-    <div class="medication-container">
-      <div class="medication-card" data-category="fga">
-        <h3>First-Gen Antipsychotics</h3>
-        <p><strong>Mechanism:</strong> Primarily block dopamine D2 receptors.</p>
-        <p><strong>Examples:</strong> Haloperidol, Chlorpromazine.</p>
-        <p><strong>Effectiveness:</strong> Strong for positive symptoms.</p>
-        <p><strong>Side Effects:</strong> High risk of EPS, sedation, tardive dyskinesia.</p>
-        <p class="source">(Source: bap.org.uk)</p>
+  <div class="subsection" id="medications">
+    <div class="blog-content-wrapper">
+      <h1>Medications</h1>
+      <div class="info-block">
+        <p>💣 <strong>Myth Busters</strong> </p>
+        <p> <strong>Myth 8 Busted:</strong> Schizophrenia <strong>CAN</strong> be treated.</p>
       </div>
-  
-      <div class="medication-card" data-category="sga">
-          <h3>Second-Gen Antipsychotics</h3>
-          <p><strong>Mechanism:</strong> Block D2 and 5-HT2A receptors.</p>
-          <p><strong>Examples:</strong> Risperidone, Olanzapine, Quetiapine.</p>
-          <p><strong>Effectiveness:</strong> As effective as FGAs for positive symptoms, better tolerability.</p>
-          <p><strong>Side Effects:</strong> Weight gain, metabolic syndrome, sedation.</p>
+      <p>While there's no cure for schizophrenia yet, effective treatments are available in helping patients manage symptoms, reduce relapses, and improve functioning. 
+        Early identification and intervention may prevent or delay schizophrenia development and improve overall quality of life.</p>
+      
+      <h2>Medication Types</h2>
+      <div class="medication-container">
+        <div class="medication-card" data-category="fga">
+          <h3>First-Gen Antipsychotics</h3>
+          <img src="https://livingwithschizophreniauk.org/wp-content/uploads/2014/07/antipsychotics1.jpg" alt="Clozapine" style="width: auto; height: 50; margin: 20px 0;">
+          <div class="figure-caption"><i>Note</i>.Chlorpromazine From <i>Living with Schizophrenia UK</i> [Online image], by Unknown, 2014 (<a href="https://livingwithschizophreniauk.org/wp-content/uploads/2014/07/antipsychotics1.jpg">Link</a>)</div>
+          <p><strong>Mechanism:</strong> Primarily block dopamine D2 receptors.</p>
+          <p><strong>Examples:</strong> Haloperidol, Chlorpromazine.</p>
+          <p><strong>Effectiveness:</strong> Strong for positive symptoms.</p>
+          <p><strong>Side Effects:</strong> High risk of EPS, sedation, tardive dyskinesia.</p>
           <p class="source">(Source: bap.org.uk)</p>
-      </div>
-  
-      <div class="medication-card" data-category="clozapine">
-          <h3>Clozapine</h3>
-          <p><strong>Mechanism:</strong> Modulates serotonin, dopamine, and others.</p>
-          <p><strong>Effectiveness:</strong> Most effective for treatment-resistant schizophrenia, reduces suicide risk.</p>
-          <p><strong>Side Effects:</strong> Agranulocytosis (requires monitoring), weight gain, seizures, sedation.</p>
-          <p class="source">(Source: psychiatryonline.org)</p>
-      </div>
-  
-      <div class="medication-card" data-category="karxt">
-          <h3>KarXT (Cobenfy)</h3>
-          <p><strong>Mechanism:</strong> Targets muscarinic acetylcholine receptors.</p>
-          <p><strong>Effectiveness:</strong> Significant reduction in positive symptoms, promising fewer side effects.</p>
-          <p><strong>Side Effects:</strong> Early trials suggest fewer sedation, weight gain, or motor issues.</p>
-          <p class="source">(Source: fda.gov, npr.org)</p>
+        </div>
+    
+        <div class="medication-card" data-category="sga">
+            <h3>Second-Gen Antipsychotics</h3>
+            <img src="https://content.api.news/v3/images/bin/2b53c1a9cf9f4ae8ee2d7ef8960a5542" alt="Second-Gen Antipsychotics" style="width: auto; height: 50; margin: 20px 0;">
+            <div class="figure-caption"><i>Note</i>. Risperdal From <i>News API</i> [Online image], by Unknown, n.d. (<a href="https://content.api.news/v3/images/bin/2b53c1a9cf9f4ae8ee2d7ef8960a5542">Link</a>)</div>
+            <p><strong>Mechanism:</strong> Block D2 and 5-HT2A receptors.</p>
+            <p><strong>Examples:</strong> Risperidone, Olanzapine, Quetiapine.</p>
+            <p><strong>Effectiveness:</strong> As effective as FGAs for positive symptoms, better tolerability.</p>
+            <p><strong>Side Effects:</strong> Weight gain, metabolic syndrome, sedation.</p>
+            <p class="source">(Source: bap.org.uk)</p>
+        </div>
+    
+        <div class="medication-card" data-category="clozapine">
+            <h3>Clozapine</h3>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSSQZ7Qhy-bDQMosnZnrjBa00l1Jom4CwTnw&s" alt="Clozapine" style="width: auto; height: 50; margin: 20px 0;">
+            <div class="figure-caption"><i>Note</i>. Clozapine From <i>Google Images</i> [Online image], by Unknown, n.d. (<a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSSQZ7Qhy-bDQMosnZnrjBa00l1Jom4CwTnw&s">Link</a>)</div>
+            <p><strong>Mechanism:</strong> Modulates serotonin, dopamine, and others.</p>
+            <p><strong>Effectiveness:</strong> Most effective for treatment-resistant schizophrenia, reduces suicide risk.</p>
+            <p><strong>Side Effects:</strong> Agranulocytosis (requires monitoring), weight gain, seizures, sedation.</p>
+            <p class="source">(Source: psychiatryonline.org)</p>
+        </div>
+    
+        <div class="medication-card" data-category="karxt">
+            <div class="new-badge">New in 2024</div>
+            <h3>KarXT (Cobenfy)</h3>
+            <img src="https://media.licdn.com/dms/image/v2/D5612AQGxvdj_-nSsVg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1727395531907?e=2147483647&v=beta&t=jiZxISD-T6Z1tclsxO5diKRJEuFNQTsce_9UgM2S26U" alt="KarXT" style="width: auto; height: 50; margin: 20px 0;">
+            <div class="figure-caption"><i>Note</i>. KarXT (Cobenfy) From <i>LinkedIn</i> [Online image], by Unknown, 2024 (<a href="https://media.licdn.com/dms/image/v2/D5612AQGxvdj_-nSsVg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1727395531907">Link</a>)</div>
+            <p><strong>Mechanism:</strong> Targets muscarinic acetylcholine receptors.</p>
+            <p><strong>Effectiveness:</strong> Significant reduction in positive symptoms, promising fewer side effects.</p>
+            <p><strong>Side Effects:</strong> Early trials suggest fewer sedation, weight gain, or motor issues.</p>
+            <p class="source">(Source: fda.gov, npr.org)</p>
+            
+        </div>
       </div>
     </div>
+  </div>
 
-    <h2>Therapies & Supports</h2>
-    <p>Comprehensive treatment includes:</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Intervention</th>
-                <th>Effectiveness</th>
-                <th>Limitations</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Cognitive Behavioral Therapy for Psychosis (CBTp)</strong></td>
-                <td>• Helps patients reframe and cope with delusions/hallucinations<br>• Reduces distress and improves insight into symptoms</td>
-                <td>• Does not eliminate psychotic symptoms<br>• Most effective when combined with medication</td>
-            </tr>
-            <tr>
-                <td><strong>Psychoeducation</strong></td>
-                <td>• Improves patient and family understanding of the illness and its treatment<br>• Helps with medication adherence and recognizing relapse signs</td>
-                <td>• Relies on participant engagement and access to trained facilitators</td>
-            </tr>
-            <tr>
-                <td><strong>Family Therapy</strong></td>
-                <td>• Reduces relapse by lowering family stress and criticism ("expressed emotion")<br>• Improves family dynamics and communication</td>
-                <td>• Not all families have time, resources, or willingness to participate</td>
-            </tr>
-            <tr>
-                <td><strong>Social Skills & Rehabilitation Programs</strong></td>
-                <td>• Teach life skills, job readiness, and foster independence<br>• Help reduce isolation and improve social function</td>
-                <td>• Gains may be gradual<br>• Access to quality programs varies by location</td>
-            </tr>
-            <tr>
-                <td><strong>Assertive Community Treatment (ACT)</strong></td>
-                <td>• Reduces hospitalizations<br>• Improves medication adherence<br>• Helps with housing and daily care<br>• Highly effective for individuals with severe or persistent symptoms</td>
-                <td>• Resource-intensive<br>• May not be available in all regions</td>
-            </tr>
-            <tr>
-                <td><strong>Adjunctive Therapies (Art, Cognitive Remediation, Lifestyle)</strong></td>
-                <td>• Art/music therapy promotes engagement and expression<br>• Cognitive remediation helps improve memory and attention<br>• Lifestyle education targets diet, exercise, smoking cessation</td>
-                <td>• Limited evidence for standalone use<br>• Often require motivation and structured support</td>
-            </tr>
-            <tr>
-                <td><strong>Early Intervention Programs</strong></td>
-                <td>• Specialized clinics for first-episode psychosis significantly improve outcomes<br>• Reduce duration of untreated psychosis (DUP), linked to better long-term functioning<br>• Offer a full suite of services: meds, therapy, school/work support, family outreach<br><span class="source">(Source: emedicine.medscape.com)</span></td>
-                <td>• Most effective in first few years; long-term effects depend on continued support<br>• May not be accessible in rural or under-resourced areas</td>
-            </tr>
-        </tbody>
-    </table>
+  <div class="subsection" id="therapies">
+    <div class="blog-content-wrapper">
+      <h1>Therapies & Supports</h1>
+      <p>Comprehensive treatment includes:</p>
+      <table>
+          <thead>
+              <tr>
+                  <th>Intervention</th>
+                  <th>Effectiveness</th>
+                  <th>Limitations</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td><strong>Cognitive Behavioral Therapy for Psychosis (CBTp)</strong></td>
+                  <td>• Helps patients reframe and cope with delusions/hallucinations<br>• Reduces distress and improves insight into symptoms</td>
+                  <td>• Does not eliminate psychotic symptoms<br>• Most effective when combined with medication</td>
+              </tr>
+              <tr>
+                  <td><strong>Psychoeducation</strong></td>
+                  <td>• Improves patient and family understanding of the illness and its treatment<br>• Helps with medication adherence and recognizing relapse signs</td>
+                  <td>• Relies on participant engagement and access to trained facilitators</td>
+              </tr>
+              <tr>
+                  <td><strong>Family Therapy</strong></td>
+                  <td>• Reduces relapse by lowering family stress and criticism ("expressed emotion")<br>• Improves family dynamics and communication</td>
+                  <td>• Not all families have time, resources, or willingness to participate</td>
+              </tr>
+              <tr>
+                  <td><strong>Social Skills & Rehabilitation Programs</strong></td>
+                  <td>• Teach life skills, job readiness, and foster independence<br>• Help reduce isolation and improve social function</td>
+                  <td>• Gains may be gradual<br>• Access to quality programs varies by location</td>
+              </tr>
+              <tr>
+                  <td><strong>Assertive Community Treatment (ACT)</strong></td>
+                  <td>• Reduces hospitalizations<br>• Improves medication adherence<br>• Helps with housing and daily care<br>• Highly effective for individuals with severe or persistent symptoms</td>
+                  <td>• Resource-intensive<br>• May not be available in all regions</td>
+              </tr>
+              <tr>
+                  <td><strong>Adjunctive Therapies (Art, Cognitive Remediation, Lifestyle)</strong></td>
+                  <td>• Art/music therapy promotes engagement and expression<br>• Cognitive remediation helps improve memory and attention<br>• Lifestyle education targets diet, exercise, smoking cessation</td>
+                  <td>• Limited evidence for standalone use<br>• Often require motivation and structured support</td>
+              </tr>
+              <tr>
+                  <td><strong>Early Intervention Programs</strong></td>
+                  <td>• Specialized clinics for first-episode psychosis significantly improve outcomes<br>• Reduce duration of untreated psychosis (DUP), linked to better long-term functioning<br>• Offer a full suite of services: meds, therapy, school/work support, family outreach<br><span class="source">(Source: emedicine.medscape.com)</span></td>
+                  <td>• Most effective in first few years; long-term effects depend on continued support<br>• May not be accessible in rural or under-resourced areas</td>
+              </tr>
+          </tbody>
+      </table>
 
-    <div class="info-block">
-      <p>💡 <strong>Early Intervention</strong></p>
-      <p>Early detection and treatment significantly improve outcomes:</p>
-      <ul>
-        <li>Recognition of prodromal symptoms</li>
-        <li>Rapid access to specialized care</li>
-        <li>Coordinated specialty care programs</li>
-      </ul>
+      <div class="info-block">
+        <p>💡 <strong>Early Intervention = Better Outcomes</strong></p>
+        <p>Early detection and treatment significantly improve outcomes:</p>
+        <ul>
+          <li>Recognition of prodromal symptoms</li>
+          <li>Rapid access to specialized care</li>
+          <li>Coordinated specialty care programs</li>
+        </ul>
+      </div>
     </div>
+  </div>
+</section>
 
-    <h2>Hope, Challenges, Needs and Research Directions</h2>
-    <p>There is no one-size-fits-all solution — effective care requires a multi-disciplinary, personalized approach involving medication, therapy, community support, and patient involvement.</p>
-    <div class="symptoms-tabs">
-      <div class="tab">
-        <button class="tab-button" onclick="toggleTab('hopes')">🌟 Hopes</button>
-        <div id="hopes" class="tab-content">
-          <ul>
-            <li><strong>Symptom Control and Stability:</strong> Most individuals with schizophrenia can experience significant symptom relief—especially of positive symptoms like hallucinations and delusions—through antipsychotic medication.</li>
-            <li><strong>New Drug Development:</strong> The 2024 FDA approval of KarXT (Cobenfy) marks a major breakthrough. Unlike traditional antipsychotics, KarXT does not primarily block dopamine receptors and has shown fewer side effects like sedation and weight gain.</li>
-            <li><strong>Early Intervention Works:</strong> Specialized early psychosis programs can dramatically improve long-term outcomes if treatment is initiated early, especially in youth.</li>
-            <li><strong>Recovery-Oriented Care:</strong> The modern emphasis on holistic, person-centered approaches—including peer support and vocational rehab—offers hope for meaningful, independent lives, even if some symptoms persist.</li>
-          </ul>
-          <p class="source">(Sources: bap.org.uk, fda.gov, npr.org, emedicine.medscape.com)</p>
+<section id="conclusion" class="blog-section">
+  <div class="subsection" id="summary">
+    <div class="blog-content-wrapper">
+      <h1>Summary</h1>
+      <p>There is no one-size-fits-all solution — effective care requires a multi-disciplinary, personalized approach involving medication, therapy, community support, and patient involvement.</p>
+      
+      <div class="symptoms-tabs">
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('myth1')" data-text="❌ Myth #1: Schizophrenia is rare.">❌ Myth #1: Schizophrenia is rare.</button>
+          <div id="myth1" class="tab-content">
+            <p><strong>Truth:</strong> Schizophrenia affects about 0.3%–0.7% of the population worldwide, with approximately 1 in 300 people globally and 1 in 100 in Australia living with the condition.</p>
+          </div>
+        </div>
+
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('myth2')" data-text="❌ Myth #2: Schizophrenia means split personalities.">❌ Myth #2: Schizophrenia means split personalities.</button>
+          <div id="myth2" class="tab-content">
+            <p><strong>Truth:</strong> Schizophrenia is not the same as dissociative identity disorder (DID). It is a complex mental health condition characterized by disruptions in thinking, perception, and behavior.</p>
+          </div>
+        </div>
+
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('myth3')" data-text="❌ Myth #3: It is caused by bad parenting.">❌ Myth #3: It is caused by bad parenting.</button>
+          <div id="myth3" class="tab-content">
+            <p><strong>Truth:</strong> Schizophrenia is a complex condition with multiple causes including genetic, biological, and environmental factors. Parenting style is not a cause.</p>
+          </div>
+        </div>
+
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('myth4')" data-text="❌ Myth #4: People have it because their parents have it.">❌ Myth #4: People have it because their parents have it.</button>
+          <div id="myth4" class="tab-content">
+            <p><strong>Truth:</strong> While there is a genetic component, having a parent with schizophrenia does not guarantee you will develop it. The risk is higher but still relatively low.</p>
+          </div>
+        </div>
+
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('myth5')" data-text="❌ Myth #5: People with schizophrenia are violent or dangerous.">❌ Myth #5: People with schizophrenia are violent or dangerous.</button>
+          <div id="myth5" class="tab-content">
+            <p><strong>Truth:</strong> Most people with schizophrenia are not violent. They are more likely to be victims of violence than perpetrators.</p>
+          </div>
+        </div>
+
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('myth6')" data-text="❌ Myth #6: People with schizophrenia are not smart.">❌ Myth #6: People with schizophrenia are not smart.</button>
+          <div id="myth6" class="tab-content">
+            <p><strong>Truth:</strong> Intelligence is not affected by schizophrenia. Many people with schizophrenia have average or above-average intelligence.</p>
+          </div>
+        </div>
+
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('myth7')" data-text="❌ Myth #7: All schizophrenics experience hallucinations and delusions.">❌ Myth #7: All schizophrenics experience hallucinations and delusions.</button>
+          <div id="myth7" class="tab-content">
+            <p><strong>Truth:</strong> Symptoms vary widely between individuals. Some may experience hallucinations and delusions, while others may have different symptoms like social withdrawal or cognitive difficulties.</p>
+          </div>
+        </div>
+
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('myth8')" data-text="❌ Myth #8: Schizophrenia can't be treated.">❌ Myth #8: Schizophrenia can't be treated.</button>
+          <div id="myth8" class="tab-content">
+            <p><strong>Truth:</strong> While there is no cure, schizophrenia can be effectively treated with a combination of medication, therapy, and support services, allowing many people to lead fulfilling lives.</p>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="tab">
-        <button class="tab-button" onclick="toggleTab('challenges')">⚠️ Challenges</button>
-        <div id="challenges" class="tab-content">
-          <ul>
-            <li><strong>Adherence Issues:</strong> Medication non-adherence remains a critical issue, often due to side effects or lack of insight into the illness. Long-acting injectables can help, but uptake varies.</li>
-            <li><strong>Treatment-Resistant Cases:</strong> About 25% of patients do not respond to standard antipsychotics. Clozapine is the best option in these cases but carries serious risks like agranulocytosis, requiring strict monitoring.</li>
-            <li><strong>Side Effects and Metabolic Issues:</strong> Many antipsychotics, especially second-generation ones, cause significant weight gain and metabolic syndrome, increasing the risk of diabetes and heart disease.</li>
-            <li><strong>Negative and Cognitive Symptoms:</strong> Current treatments are less effective for negative symptoms (e.g., social withdrawal, lack of motivation) and cognitive deficits. These symptoms often impair real-world functioning even when psychosis is controlled.</li>
-            <li><strong>Relapse Risk:</strong> Schizophrenia has a relapsing-remitting course. Each relapse can worsen long-term outcomes. Preventing them requires continuous care and early detection of warning signs.</li>
-            <li><strong>Stigma:</strong> Stigma remains a major barrier throughout treatment, leading to non-adherence, social withdrawal, or shame. It reduces engagement with care, making education, empathy, and peer support essential to counter hopelessness and promote recovery.</li>
-          </ul>
-          <p class="source">(Sources: bap.org.uk, psychiatryonline.org)</p>
+  <div class="subsection" id="hope-challenges">
+    <div class="blog-content-wrapper">
+      <h1>Hope, Challenges, Needs and Directions</h1>
+      <p>There is no one-size-fits-all solution — effective care requires a multi-disciplinary, personalized approach involving medication, therapy, community support, and patient involvement.</p>
+      <div class="symptoms-tabs">
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('hopes')">🌟 Hopes</button>
+          <div id="hopes" class="tab-content">
+            <ul>
+              <li><strong>Symptom Control and Stability:</strong> Most individuals with schizophrenia can experience significant symptom relief—especially of positive symptoms like hallucinations and delusions—through antipsychotic medication.</li>
+              <li><strong>New Drug Development:</strong> The 2024 FDA approval of KarXT (Cobenfy) marks a major breakthrough. Unlike traditional antipsychotics, KarXT does not primarily block dopamine receptors and has shown fewer side effects like sedation and weight gain.</li>
+              <li><strong>Early Intervention Works:</strong> Specialized early psychosis programs can dramatically improve long-term outcomes if treatment is initiated early, especially in youth.</li>
+              <li><strong>Recovery-Oriented Care:</strong> The modern emphasis on holistic, person-centered approaches—including peer support and vocational rehab—offers hope for meaningful, independent lives, even if some symptoms persist.</li>
+            </ul>
+            <p class="source">(Sources: bap.org.uk, fda.gov, npr.org, emedicine.medscape.com)</p>
+          </div>
         </div>
-      </div>
 
-      <div class="tab">
-        <button class="tab-button" onclick="toggleTab('needs')">🚨 Pressing Needs</button>
-        <div id="needs" class="tab-content">
-          <ul>
-            <li><strong>Better Tolerated Medications:</strong> There's a strong need for antipsychotics with fewer motor, cognitive, and metabolic side effects to improve adherence and long-term health outcomes.</li>
-            <li><strong>Targeting Negative Symptoms and Cognition:</strong> Existing drugs are largely ineffective for the most disabling aspects of the disorder. New treatments must address this gap to improve quality of life and functional recovery.</li>
-            <li><strong>Accessible Early Intervention Services:</strong> Programs for first-episode psychosis are not yet widely available, particularly in rural or underfunded areas, despite their proven efficacy.</li>
-            <li><strong>Culturally Sensitive, Integrated Care:</strong> Tailored treatment that respects cultural differences, includes family, and provides coordinated care (e.g., through Assertive Community Treatment teams) is essential but inconsistently applied.</li>
-          </ul>
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('challenges')">⚠️ Challenges</button>
+          <div id="challenges" class="tab-content">
+            <ul>
+              <li><strong>Adherence Issues:</strong> Medication non-adherence remains a critical issue, often due to side effects or lack of insight into the illness. Long-acting injectables can help, but uptake varies.</li>
+              <li><strong>Treatment-Resistant Cases:</strong> About 25% of patients do not respond to standard antipsychotics. Clozapine is the best option in these cases but carries serious risks like agranulocytosis, requiring strict monitoring.</li>
+              <li><strong>Side Effects and Metabolic Issues:</strong> Many antipsychotics, especially second-generation ones, cause significant weight gain and metabolic syndrome, increasing the risk of diabetes and heart disease.</li>
+              <li><strong>Negative and Cognitive Symptoms:</strong> Current treatments are less effective for negative symptoms (e.g., social withdrawal, lack of motivation) and cognitive deficits. These symptoms often impair real-world functioning even when psychosis is controlled.</li>
+              <li><strong>Relapse Risk:</strong> Schizophrenia has a relapsing-remitting course. Each relapse can worsen long-term outcomes. Preventing them requires continuous care and early detection of warning signs.</li>
+              <li><strong>Stigma:</strong> Stigma remains a major barrier throughout treatment, leading to non-adherence, social withdrawal, or shame. It reduces engagement with care, making education, empathy, and peer support essential to counter hopelessness and promote recovery.</li>
+            </ul>
+            <p class="source">(Sources: bap.org.uk, psychiatryonline.org)</p>
+          </div>
         </div>
-      </div>
 
-      <div class="tab">
-        <button class="tab-button" onclick="toggleTab('research')">🔬 Research Directions</button>
-        <div id="research" class="tab-content">
-          <ul>
-            <li><strong>Non-Dopamine-Based Therapies:</strong> KarXT's success shows promise for non-dopaminergic pathways—like the muscarinic acetylcholine system. Other targets being explored include glutamate modulation and inflammation pathways.</li>
-            <li><strong>Digital and Tech-Enabled Care:</strong> Tools like smartphone apps for symptom monitoring and early relapse detection, and virtual reality for social skills training, are being developed to support engagement and autonomy.</li>
-            <li><strong>Cognitive Remediation & Lifestyle Integration:</strong> Combining therapies that enhance memory and attention with lifestyle interventions (e.g., diet, exercise, smoking cessation) may improve both mental and physical health outcomes.</li>
-            <li><strong>Recovery Model Integration:</strong> There's a growing emphasis on shifting away from a purely clinical focus to one that enables individuals to pursue education, work, relationships, and creative goals, even with lingering symptoms.</li>
-          </ul>
-          <p class="source">(Sources: fda.gov, npr.org)</p>
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('needs')">🚨 Pressing Needs</button>
+          <div id="needs" class="tab-content">
+            <ul>
+              <li><strong>Better Tolerated Medications:</strong> There's a strong need for antipsychotics with fewer motor, cognitive, and metabolic side effects to improve adherence and long-term health outcomes.</li>
+              <li><strong>Targeting Negative Symptoms and Cognition:</strong> Existing drugs are largely ineffective for the most disabling aspects of the disorder. New treatments must address this gap to improve quality of life and functional recovery.</li>
+              <li><strong>Accessible Early Intervention Services:</strong> Programs for first-episode psychosis are not yet widely available, particularly in rural or underfunded areas, despite their proven efficacy.</li>
+              <li><strong>Culturally Sensitive, Integrated Care:</strong> Tailored treatment that respects cultural differences, includes family, and provides coordinated care (e.g., through Assertive Community Treatment teams) is essential but inconsistently applied.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tab">
+          <button class="tab-button" onclick="toggleTab('research')">🔬 Research Directions</button>
+          <div id="research" class="tab-content">
+            <ul>
+              <li><strong>Non-Dopamine-Based Therapies:</strong> KarXT's success shows promise for non-dopaminergic pathways—like the muscarinic acetylcholine system. Other targets being explored include glutamate modulation and inflammation pathways.</li>
+              <li><strong>Digital and Tech-Enabled Care:</strong> Tools like smartphone apps for symptom monitoring and early relapse detection, and virtual reality for social skills training, are being developed to support engagement and autonomy.</li>
+              <li><strong>Cognitive Remediation & Lifestyle Integration:</strong> Combining therapies that enhance memory and attention with lifestyle interventions (e.g., diet, exercise, smoking cessation) may improve both mental and physical health outcomes.</li>
+              <li><strong>Recovery Model Integration:</strong> There's a growing emphasis on shifting away from a purely clinical focus to one that enables individuals to pursue education, work, relationships, and creative goals, even with lingering symptoms.</li>
+            </ul>
+            <p class="source">(Sources: fda.gov, npr.org)</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="conclusion">
-  <div class="content-column" style="flex: 100%;">
-    <h1>Key Takeaways & Future</h1>
-    <p>Schizophrenia is a serious but treatable mental health condition. With the right mix of medication, therapy, and community support, people can lead fulfilling lives. We must:</p>
-    <ul>
-      <li>Reduce stigma and discrimination</li>
-      <li>Improve access to quality care</li>
-      <li>Invest in ongoing research</li>
-      <li>Develop more effective treatments</li>
-      <li>Enhance early intervention programs</li>
+<section id="closing">
+  <div class="blog-content-wrapper">
+    <div class="quote-box">
+      <div class="quote-content">
+        <p class="quote-line" data-text="Schizophrenia doesn't define a person. It is just a part of their story."></p>
+        <p class="quote-line" data-text="It's not a lost cause. It's a journey — and people do recover."></p>
+        <p class="quote-line" data-text="What they need isn't just medicine, but opportunity, dignity, and hope."></p>
+      </div>
+    </div>
+    <h2>So what can we do?</h2>
+    <p><strong>Researchers</strong> must keep pushing for answers.</p>
+    <p><strong>Policy makers</strong> must expand access, early intervention, and equity in mental health.</p>
+    <p><strong>Society</strong> must fight stigma and foster inclusion everywhere.</p>
+    <p><strong>Each of us</strong> can listen, learn, and lead with empathy.</p>
+  </div>
+</section>
+
+<section id="references">
+  <div class="blog-content-wrapper">
+    <div style="text-align: center;">
+      <h2>References</h2>
+    </div>
+    <ul style="line-height: 2.5; font-size: 1rem; padding-left: 40px; list-style-type: none;">
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">British Association for Psychopharmacology. (2016). <i>Chlorpromazine</i> [Online image]. https://www.bap.org.uk/articles/wp-content/uploads/2016/10/publicinfo_chlorpromazine3.gif</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">British Association for Psychopharmacology. (n.d.). <i>KarXT (Cobenfy)</i> [Online image]. LinkedIn. https://media.licdn.com/dms/image/v2/D5612AQGxvdj_-nSsVg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1727395531907?e=2147483647&v=beta&t=jiZxISD-T6Z1tclsxO5diKRJEuFNQTsce_9UgM2S26U</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Chong, H. Y., Teoh, S. L., Wu, D. B. C., Kotirum, S., Chiou, C. F., & Chaiyakunapruk, N. (2016). Global economic burden of schizophrenia: A systematic review. <i>Neuropsychiatric Disease and Treatment, 12</i>, 357. https://doi.org/10.2147/NDT.S96649</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Cleveland Clinic. (2022). <i>Psychosis: What It Is, Symptoms, Causes, Types & Treatment</i>. https://my.clevelandclinic.org/health/symptoms/23012-psychosis</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Cleveland Clinic. (2024). <i>Schizophrenia: What It Is, Causes, Symptoms & Treatment</i>. https://my.clevelandclinic.org/health/diseases/4568-schizophrenia</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Dattani, S. (2024). Antipsychotic medications: A timeline of innovations and remaining challenges. <i>Our World in Data</i>. https://ourworldindata.org/antipsychotic-medications-timeline</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Davis, K. L., Kahn, S., Ko, G., & Davidson, M. (1991). Dopamine in schizophrenia: A review and reconceptualization.</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Department of Health, Victoria. (n.d.). <i>Schizophrenia</i>. Better Health Channel. Retrieved May 23, 2025, from https://www.betterhealth.vic.gov.au/health/conditionsandtreatments/schizophrenia</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Everyday Health. (n.d.). <i>Community care team</i> [Online image]. https://images.everydayhealth.com/images/emotional-health/schizophrenia/who-should-be-on-your-schizophrenia-care-team-alt-1440x810.jpg?sfvrsn=e38692db_5</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Food and Drug Administration (FDA). (2024). FDA approves drug with new mechanism of action for treatment of schizophrenia. https://www.fda.gov/news-events/press-announcements/fda-approves-drug-new-mechanism-action-treatment-schizophrenia</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Google Images. (n.d., a). <i>Emil Kraepelin</i> [Photograph]. https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQz3eIldZ9Mp4fr5BWaMYnW4S0N2Ag7hdOqIEIYeC6HrV6Eb86Q9zEFcNlA8boMX9psVp3EviFgzof8kRfBc_HDRA</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Google Images. (n.d., b). <i>Eugen Bleuler</i> [Photograph]. https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfPtg-3t12Edl-yg8GgKOd1p49rB6PcsS3l60QKEIZyAWwrdn61cG_k3xBGOus52aoFKt3U0MDfLLxPVbeGtSe2w</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Google Images. (n.d., c). <i>Clozapine</i> [Online image]. https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSSQZ7Qhy-bDQMosnZnrjBa00l1Jom4CwTnw&s</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Government of Western Australia. (2022). <i>World Schizophrenia Awareness Week 2022</i>. https://www.nmhs.health.wa.gov.au/News/2022/05/24/Schizophrenia</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Haddad, P., Kirk, R., & Green, R. (2016). Chlorpromazine, the first antipsychotic medication: History, controversy and legacy. <i>British Association for Psychopharmacology</i>. https://www.bap.org.uk/articles/chlorpromazine-the-first-antipsychotic/</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Heckers, S. (2011). Bleuler and the neurobiology of schizophrenia. <i>Schizophrenia Bulletin, 37</i>(6), 1131. https://doi.org/10.1093/schbul/sbr108</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Heinrichs, R. W. (2003). Historical origins of schizophrenia: Two early madmen and their illness. <i>Journal of the History of the Behavioral Sciences, 39</i>(4), 349–363. https://doi.org/10.1002/jhbs.10152</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Hoff, P. (2012). Eugen Bleuler's concept of schizophrenia and its relevance to present-day psychiatry. <i>Neuropsychobiology, 66</i>(1). https://doi.org/10.1159/000337174</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Hor, K., & Taylor, M. (2010). Suicide and schizophrenia: A systematic review of rates and risk factors. <i>Journal of Psychopharmacology, 24</i>(4_suppl), 81. https://doi.org/10.1177/1359786810385490</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">iStock. (n.d.). <i>Group therapy addiction treatment concept</i> [Online image]. https://media.istockphoto.com/id/1322211571/vector/group-therapy-addiction-treatment-concept-characters-counseling-with-psychologist-on.jpg?s=612x612&w=0&k=20&c=moDxi4u07wOzgiiuS2HK66dJzpsfRHkIk1ITTI5NbeE=</li>
+      
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Kaul, I., Sawchak, S., Correll, C. U., Kakar, R., Breier, A., Zhu, H., Miller, A. C., Paul, S. M., & Brannan, S. K. (2024). Efficacy and safety of the muscarinic receptor agonist KarXT (xanomeline–trospium) in schizophrenia (EMERGENT-2) in the USA: Results from a randomized, double-blind, placebo-controlled, flexible-dose phase 3 trial. <i>The Lancet, 403</i>(10422), 160–170. https://doi.org/10.1016/S0140-6736(23)02190-6</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Looi, J. C. L., & Robson, S. J. (2025). Living – and dying – with schizophrenia in Australia. <i>Australasian Psychiatry</i>. https://doi.org/10.1177/10398562241307807</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Living with Schizophrenia UK. (2014). <i>Chlorpromazine</i> [Online image]. https://livingwithschizophreniauk.org/wp-content/uploads/2014/07/antipsychotics1.jpg</li>
+      
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Lupkin, S. (2024). First new type of treatment for schizophrenia in decades. <i>NPR Health News</i>. https://www.npr.org/sections/shots-health-news/2024/09/27/g-s1-25089/karxt-cobenfy-schizophrenia-psychosis-fda</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Medical News Today. (2022). <i>Schizophrenia symptoms</i> [Online image]. https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2022/06/stages_schizophrenia_GettyImages1338339014_Header-1024x575.jpg?w=1155&h=1528</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Moreno-Küstner, B., Martín, C., & Pastor, L. (2018). Prevalence of psychotic disorders and its association with methodological issues: A systematic review and meta-analyses. <i>PLoS ONE, 13</i>(4). https://doi.org/10.1371/journal.pone.0195687</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Morgan, V. A., Waterreus, A., Jablensky, A., MacKinnon, A., McGrath, J. J., Carr, V., Bush, R., Castle, D., Cohen, M., Harvey, C., Galletly, C., Stain, H. J., Neil, A. L., McGorry, P., Hocking, B., Shah, S., & Saw, S. (2012). People living with psychotic illness in 2010: The second Australian national survey of psychosis. <i>Australian and New Zealand Journal of Psychiatry, 46</i>(8), 735–752. https://doi.org/10.1177/0004867412449877</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">National Health Service (NHS). (2023). <i>Causes – Schizophrenia</i>. https://www.nhs.uk/mental-health/conditions/schizophrenia/causes/</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">National Institute of Mental Health (NIMH). (n.d.). <i>Schizophrenia – Statistics</i>. Retrieved May 23, 2025, from https://www.nimh.nih.gov/health/statistics/schizophrenia</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">New Scientist. (2021). <i>Brain research</i> [Online image]. https://images.newscientist.com/wp-content/uploads/2021/11/16123327/pri210550131.jpg</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">News API. (n.d.). <i>Risperdal</i> [Online image]. https://content.api.news/v3/images/bin/2b53c1a9cf9f4ae8ee2d7ef8960a5542</li>
+      
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Noll, R. (2012). Dementia praecox, 1886: A new turning point? <i>History of Psychiatry, 23</i>(2), 255–256. https://doi.org/10.1177/0957154x11428420</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">NPR. (2017). <i>Historical asylum</i> [Photograph]. https://media.npr.org/assets/img/2017/07/05/allison-building-sleeping-porch-_custom-de6f30cdd0a1080b63322f979772e084211277e9.jpg</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">ONE Interpreting. (2015). <i>Disorganized speech in schizophrenia</i> [Video]. YouTube. https://www.youtube.com/embed/u2vMnyTiwp4?start=19</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">PNG Tree. (2022). <i>World map silhouette</i> [Clipart]. https://png.pngtree.com/png-vector/20220610/ourmid/pngtree-detailed-world-map-isolated-on-white-background-png-image_4869650.png</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Psychiatry DataBase (PsychDB). (2023). <i>Schizophrenia</i>. https://www.psychdb.com/psychosis/schizophrenia-scz</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Quotev. (n.d.). <i>Colour wheel</i> [Online image]. https://i.quotev.com/tbjt6pskkziq.jpg</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Ramsey, J. M. (2016). <i>Male and female age at onset distributions for schizophrenia</i> [Figure]. https://www.researchgate.net/profile/Jordan-Ramsey-2/publication/304266719/figure/fig6/AS:425557956534284@1478472331928/Male-and-female-age-at-onset-distributions-for-schizophrenia-in-the-WHO-Determinants-of.png</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Recap Radio. (2019). <i>Delusions and magical thinking in schizophrenia</i> [Video]. YouTube. https://www.youtube.com/embed/fJMOySCn5ho?start=307&end=375</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Schizoin Through Life. (2018). <i>Hearing voices: A personal account</i> [Video]. YouTube. https://www.youtube.com/embed/N3jo-0bdSsY?start=274&end=310</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Substance Abuse and Mental Health Services Administration (SAMHSA). (2016). Psychotic disorders (MHSS). In <i>Impact of the DSM-IV to DSM-5 changes on the National Survey on Drug Use and Health</i>. https://www.ncbi.nlm.nih.gov/books/NBK519704/#ch3.s2</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">SVGSILH. (n.d.). <i>General population icon</i> [Clipart]. https://svgsilh.com/svg/1299985.svg</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">The Noun Project. (n.d.). <i>Schizophrenia patient icon</i> [Clipart]. https://static.thenounproject.com/png/1000160-200.png</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Torrey, E. F., & Yolken, R. H. (2019). Schizophrenia as a pseudogenetic disease: A call for more gene-environmental studies. <i>Psychiatric Research, 278</i>, 146–150. https://doi.org/10.1016/j.psychres.2019.06.006</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Vecteezy. (n.d.). <i>Australia map</i> [Clipart]. https://static.vecteezy.com/system/resources/thumbnails/017/745/234/small/doodle-freehand-drawing-of-australia-map-free-png.png</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Velligan, D. I., & Rao, S. (2023). The epidemiology and global burden of schizophrenia. <i>The Journal of Clinical Psychiatry, 84</i>(1). https://doi.org/10.4088/JCP.MS21078COM5</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Wallace, A., Isenberg, K., York, W., Shinde, M., Barron, J., Franchino-Elder, J., Sand, M., & Sidovar, M. (2020). Detecting schizophrenia early: Prediagnosis healthcare utilization characteristics of patients with schizophrenia may aid early detection. <i>Schizophrenia Research, 215</i>. https://doi.org/10.1016/j.schres.2019.08.011</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Weston-Green, K. (2022). Antipsychotic drug development: From historical evidence to fresh perspectives. <i>Frontiers in Psychiatry, 13</i>, 903156. https://doi.org/10.3389/fpsyt.2022.903156</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">World Health Organization (WHO). (2022, January 10). <i>Schizophrenia – Fact Sheet</i>. https://www.who.int/news-room/fact-sheets/detail/schizophrenia</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Zagorski, N. (2022). Family interventions benefit people with schizophrenia. <i>Psychiatric News, 57</i>(6). https://doi.org/10.1176/appi.pn.2022.06.4.21</li>
+
+      <li style="text-indent: -40px; padding-left: 40px; margin-bottom: 1.5em;">Zerati, E. (2010). <i>Catatonic symptoms in schizophrenia</i> [Video]. YouTube. https://www.youtube.com/embed/zAEJ-Jvndms?end=24</li>
+
     </ul>
   </div>
 </section>
 
-  <script src="script.js"></script>
-  <button id="backToTopBtn" title="Back to Top"></button>
-  
-  <footer>
-    <p>&copy; 2025 Anran Huang. All rights reserved.</p>
-  </footer>
+
+<script src="script.js"></script>
+<button id="backToTopBtn" title="Back to Top"></button>
+
+<footer>
+  <p>&copy; 2025 Anran Huang. All rights reserved.</p>
+</footer>
 </body>
 </html>

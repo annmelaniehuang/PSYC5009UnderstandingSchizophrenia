@@ -24,9 +24,42 @@ body {
     background: #3700b3;
     padding: 0;
     display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .main-nav {
+    display: flex;
     justify-content: space-around;
-    height: 60px; /* Set a fixed height */
-    align-items: center; /* Center items vertically */
+    height: 60px;
+    align-items: center;
+  }
+  
+  .sub-nav {
+    background: #6200ea;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .sub-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .sub-nav a:hover {
+    background-color: #7c4dff;
+  }
+  
+  .sub-nav a.active {
+    background-color: #7c4dff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
   
   nav a {
@@ -34,9 +67,9 @@ body {
     text-decoration: none;
     font-weight: bold;
     padding: 0 1rem;
-    height: 100%; /* Make links fill the nav height */
-    display: flex; /* Use flexbox for vertical centering */
-    align-items: center; /* Center text vertically */
+    height: 100%;
+    display: flex;
+    align-items: center;
     transition: all 0.3s ease;
   }
   
@@ -619,8 +652,8 @@ details[open] summary {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Create two equal columns */
     gap: 20px; /* Spacing between grid items */
-    width: 90%;
-    max-width: 800px; /* Adjust as needed for the grid layout */
+    width: 100%; /* Fill the full width */
+    max-width: 100%; /* Remove max-width constraint */
 }
 
 .medication-card {
@@ -631,11 +664,21 @@ details[open] summary {
     box-sizing: border-box;
     transition: transform 0.2s ease-in-out, max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
     overflow: hidden;
-    max-height: 150px; /* Initial collapsed height */
+    max-height: 250px;
+    width: 100%;
+    position: relative; /* Add this for badge positioning */
+}
+
+.medication-card img {
+    width: 100%;
+    height: 150px; /* Fixed height for all images */
+    object-fit: cover; /* This will maintain aspect ratio while filling the space */
+    margin: 20px 0;
+    border-radius: 4px;
 }
 
 .medication-card.expanded {
-    max-height: 500px; /* Adjust as needed for full content */
+    max-height: 800px; /* Increased from 500px to 800px */
     padding-bottom: 30px;
 }
 
@@ -643,6 +686,22 @@ details[open] summary {
     transform: translateY(-5px);
     cursor: pointer;
     outline-offset: 2px;
+}
+
+.medication-card h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.medication-card p {
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.medication-card .source {
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 15px;
 }
 
 .medication-card[data-category="fga"]:hover {
@@ -661,20 +720,30 @@ details[open] summary {
     outline: 3px solid #f5b7b1; /* Red */
 }
 
-.medication-card h3 {
-    margin-top: 0;
-    color: #333;
-}
-
-.medication-card p {
-    margin-bottom: 8px;
-    color: #555;
-}
-
-.medication-card .source {
+.new-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff4081;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
     font-size: 0.8em;
-    color: #777;
-    margin-top: 15px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.new-badge::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 5px 5px 0;
+    border-color: transparent #c62828 transparent transparent;
 }
 
 .non-drug-interventions {
@@ -777,3 +846,372 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #ddd;
 }
+
+.timeline-horizontal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 40px 0;
+    padding: 20px 0;
+}
+
+.timeline-horizontal::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #3700b3;
+    z-index: 1;
+}
+
+.timeline-point {
+    position: relative;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 2;
+    min-width: 120px;
+    border: 2px solid #3700b3;
+}
+
+.timeline-point span {
+    display: block;
+    font-weight: bold;
+    color: #3700b3;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.timeline-point::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #3700b3;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.timeline-point:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.research-figure {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.research-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.figure-caption {
+    margin-top: 15px;
+    font-size: 0.75em;
+    color: #666;
+    font-style: italic;
+    line-height: 1.4;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.life-expectancy {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.life-expectancy div {
+    flex: 1;
+    max-width: 300px;
+    padding: 20px;
+}
+
+.life-expectancy img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.life-expectancy p {
+    margin: 0;
+    line-height: 1.4;
+}
+
+.life-expectancy strong {
+    color: #3700b3;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.myth-truth-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+  }
+  
+  .myth-column, .truth-column {
+    background: #fff;
+    border-left: 6px solid #6200ea;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+  
+  .myth-column h3, .truth-column h3 {
+    color: #3700b3;
+    margin-bottom: 10px;
+  }
+  
+  .myth-column ul, .truth-column ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .myth-column li, .truth-column li {
+    margin-bottom: 12px;
+    padding-left: 5px;
+    line-height: 1.6;
+  }
+  
+.myth-truth-container {
+    max-width: 800px;
+    margin: 30px auto;
+}
+
+.myth-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.myth-tab {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.myth-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.myth-header {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8f9fa;
+    border-left: 4px solid #6200ea;
+}
+
+.myth-number {
+    color: #6200ea;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.myth-title {
+    flex-grow: 1;
+    margin: 0 10px;
+}
+
+.arrow {
+    color: #6200ea;
+    transition: transform 0.3s ease;
+}
+
+.truth-content {
+    display: none;
+    padding: 20px;
+    background: #fff;
+    border-top: 1px solid #eee;
+    animation: slideDown 0.3s ease;
+}
+
+.truth-content p {
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.quote-box {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+}
+
+.quote-box::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 120px;
+    color: rgba(98, 0, 234, 0.1);
+    font-family: Georgia, serif;
+}
+
+.quote-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px 0;
+}
+
+.quote-line {
+    font-size: 1.4em;
+    line-height: 1.8;
+    margin: 30px 0;
+    color: #333;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    position: relative;
+    min-height: 2em;
+    padding-left: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.quote-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quote-line::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    color: #6200ea;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 2s steps(40, end) forwards;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Prevalence section flex layout */
+.prevalence-flex-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 18px 0 24px 0;
+  align-items: center; /* Center horizontally */
+}
+.prevalence-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+  justify-content: center; /* Center row contents horizontally */
+}
+.prevalence-image {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.prevalence-text {
+  flex: 1 1 0;
+  min-width: 120px;
+  font-size: 1.1em;
+  color: #222;
+  text-align: center; /* Center text */
+}
+@media (max-width: 600px) {
+  .prevalence-row {
+    flex-direction: column;
+    align-items: center; /* Center on mobile too */
+    gap: 8px;
+    justify-content: center;
+  }
+  .prevalence-flex-container {
+    gap: 10px;
+    align-items: center;
+  }
+}
+
+.subsection {
+    display: none;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.subsection.active {
+    display: block;
+}
+
+.subsection h1 {
+    color: #3700b3;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.subsection h2 {
+    color: #6200ea;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.subsection h3 {
+    color: #7c4dff;
+    margin: 20px 0 10px;
+    text-align: center;
+}
+
+.subsection p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.subsection .blog-content-wrapper {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+  

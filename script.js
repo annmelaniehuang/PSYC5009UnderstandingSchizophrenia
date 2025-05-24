@@ -1,20 +1,87 @@
 function showSection(sectionId) {
     // Hide all sections
-    document.querySelectorAll('section').forEach(section => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
         section.style.display = 'none';
-        section.classList.remove('active');
     });
     
-    // Show selected section
+    // Show the selected section
     const selectedSection = document.getElementById(sectionId);
-    selectedSection.style.display = 'flex';
-    selectedSection.classList.add('active');
+    if (selectedSection) {
+        selectedSection.style.display = 'block';
+    }
     
-    // Update active nav link
-    document.querySelectorAll('nav a').forEach(link => {
+    // Hide all sub-navigation
+    const subNavs = document.querySelectorAll('.sub-nav');
+    subNavs.forEach(subNav => {
+        subNav.style.display = 'none';
+    });
+    
+    // Show relevant sub-navigation if it exists
+    const relevantSubNav = document.getElementById(sectionId + '-subnav');
+    if (relevantSubNav) {
+        relevantSubNav.style.display = 'flex';
+    }
+    
+    // Update active link in main navigation
+    const mainNavLinks = document.querySelectorAll('.main-nav a');
+    mainNavLinks.forEach(link => {
         link.classList.remove('active');
-        const onclickAttr = link.getAttribute('onclick');
-        if (onclickAttr && onclickAttr.includes(sectionId)) {
+        if (link.getAttribute('onclick').includes(sectionId)) {
+            link.classList.add('active');
+        }
+    });
+    
+    // Show main section content when showing the section
+    const diagnosisMain = document.getElementById('diagnosis-main');
+    const treatmentMain = document.getElementById('treatment-main');
+    if (diagnosisMain) {
+        diagnosisMain.style.display = 'block';
+    }
+    if (treatmentMain) {
+        treatmentMain.style.display = 'block';
+    }
+    
+    // Hide all subsections when showing the main section
+    const subsections = document.querySelectorAll('.subsection');
+    subsections.forEach(subsection => {
+        subsection.style.display = 'none';
+    });
+
+    // If conclusion section is selected, show summary subsection by default
+    if (sectionId === 'conclusion') {
+        showSubsection('summary');
+    }
+}
+
+function showSubsection(subsectionId) {
+    // Hide all subsections
+    const subsections = document.querySelectorAll('.subsection');
+    subsections.forEach(subsection => {
+        subsection.style.display = 'none';
+    });
+    
+    // Show the selected subsection
+    const selectedSubsection = document.getElementById(subsectionId);
+    if (selectedSubsection) {
+        selectedSubsection.style.display = 'block';
+    }
+    
+    // Hide main section content when showing subsections
+    const diagnosisMain = document.getElementById('diagnosis-main');
+    const treatmentMain = document.getElementById('treatment-main');
+    if (diagnosisMain) {
+        diagnosisMain.style.display = 'none';
+    }
+    if (treatmentMain) {
+        treatmentMain.style.display = 'none';
+    }
+    
+    // Update active link in sub-navigation
+    const subNavLinks = document.querySelectorAll('.sub-nav a');
+    subNavLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('onclick').includes(subsectionId)) {
             link.classList.add('active');
         }
     });
@@ -24,12 +91,21 @@ function showSection(sectionId) {
 document.addEventListener('DOMContentLoaded', function() {
     showSection('intro');
 
-    // Add click event listeners to nav links
-    document.querySelectorAll('nav a').forEach(link => {
+    // Add click event listeners to main nav links
+    document.querySelectorAll('.main-nav a').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const sectionId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
             showSection(sectionId);
+        });
+    });
+
+    // Add click event listeners to sub-nav links
+    document.querySelectorAll('.sub-nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const subsectionId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+            showSubsection(subsectionId);
         });
     });
 
@@ -61,18 +137,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const etiologyInfoDiv = document.getElementById('etiologyInfo');
 
     const etiologyText = {
-        biological: `<strong>🧬 Genetics and Biology:</strong>
-                    <li>Schizophrenia runs in families, suggesting strong genetic influence.</li>
-                    <li>Identical twins have a 40–50% concordance rate vs ~1% general population risk.</li>
-                    <li>No single gene causes schizophrenia; rather, hundreds of genes contribute small risks.</li>
-                    <li>These genes are often involved in brain development and neurotransmitter function.</li>
-                    <li>Estimated heritability is high (~80%), meaning most risk is genetic, though not deterministic.</li></ul>`,
-        genetic: `<strong>🧠 Genetics and Biology:</strong> 
-                 <li>Linked to neurotransmitter imbalances — especially dopamine (the "dopamine hypothesis").</li>
-                 <li>Glutamate is also implicated in more recent research.</li>
-                 <li>Brain imaging shows subtle structural differences in some patients (e.g., enlarged ventricles, reduced hippocampal and frontal lobe volume).</li>
-                 <li>Cognitive issues (e.g., attention, memory problems) often appear in childhood, suggesting a neurodevelopmental origin.</li></ul>`,
-        environmental:  `<strong>🌍 Environmental Factors</strong><ul>
+        biological: `<strong>🧠 Biology:</strong><ul>
+                    <li>Brain chemistry imbalances, especially dopamine overactivity.</li>
+                    <li>Implication of other neurotransmitters like glutamate.</li>
+                    <li>Subtle differences in brain structure have been observed in some people with schizophrenia, suggesting a brain disorder component.</li></ul>`,
+        genetic: `<strong>🧬 Genetics:</strong><ul> 
+                    <li>Schizophrenia runs in families, indicating a strong genetic component.</li>
+                    <li>High heritability (up to ~80%).</li>
+                    <li>Hundreds of genes each contribute a small increase in risk.</li>
+                    <li>These genes often affect brain development or neurotransmitter systems.</li>
+                    <li>Older paternal age linked to higher risk (potential accumulation of genetic mutations).</li>
+                    <li>Identical twin studies show a 50% chance of the other twin developing it if one does (even if raised separately), highlighting a genetic link.</li>
+                    <li>Non-identical twins show a lower concordance rate (1 in 8), suggesting genes aren't the only factor.</li>
+                    <li>General population risk is about 1 in 100, lower than for siblings of those with schizophrenia.</li>
+                    <li>Genetics increases susceptibility but is not deterministic (e.g., 87% probability of not developing it even with one affected parent).</li></ul>`,
+        environmental:  `<strong>🌍 Environmental Factors:</strong><ul>
                    <li>Prenatal infections or malnutrition can slightly increase risk.</li>
                    <li>Birth complications and early brain injury are possible contributors.</li>
                    <li>Urban upbringing is associated with ~2× increased risk (potentially due to stress, infection exposure, pollution, isolation).</li>
@@ -81,10 +160,10 @@ document.addEventListener('DOMContentLoaded', function() {
                    <li>Other substances like amphetamines and hallucinogens may trigger psychosis.</li>
                    <li>Advanced paternal age (>45) is associated with higher risk, likely due to genetic mutations.</li></ul>`,
         psychological: `<strong>🧠 Psychological and Social Factors</strong><ul>
-                    <li>While schizophrenia is fundamentally a brain-based disorder, psychological and social factors influence its course.</li>
                     <li>High levels of chronic stress and high-conflict family environments ("high expressed emotion") can increase relapse likelihood.</li>
-                    <li>These don't cause schizophrenia but can exacerbate symptoms.</li>
-                    <li>Supportive psychosocial environments can help protect against symptom worsening or relapse.</li></ul>`
+                    <li>Family environment with "high expressed emotion" (critical/hostile communication) linked to higher relapse rates.</li>
+                    <li>Prolonged childhood trauma or abuse can elevate risk.</li>
+                    <li>Social defeat/discrimination after migration can increase incidence.</li></ul>`,
     };
 
     if (biologicalFactor) {
@@ -117,8 +196,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function toggleTab(tabId) {
     const tabContent = document.getElementById(tabId);
-    if (tabContent) {
-        tabContent.classList.toggle('open');
+    const button = tabContent.previousElementSibling;
+
+    // Toggle the current tab
+    if (tabContent.style.display === 'block') {
+        // Close the tab
+        tabContent.style.display = 'none';
+        // Remove strikethrough from the button text
+        button.innerHTML = button.getAttribute('data-text');
+        // Remove check mark from Truth
+        const truthElement = tabContent.querySelector('p strong');
+        if (truthElement && truthElement.textContent.includes('Truth:')) {
+            truthElement.innerHTML = 'Truth:';
+        }
+    } else {
+        // Open the tab
+        tabContent.style.display = 'block';
+        // Add strikethrough to the button text
+        button.innerHTML = `<del>${button.getAttribute('data-text')}</del>`;
+        // Add green check mark to the Truth text
+        const truthElement = tabContent.querySelector('p strong');
+        if (truthElement && truthElement.textContent === 'Truth:') {
+            truthElement.innerHTML = '✅ Truth:';
+        }
     }
 }
 
@@ -258,4 +358,55 @@ document.addEventListener('DOMContentLoaded', () => {
             card.classList.toggle('expanded');
         });
     });
+});
+
+function toggleMyth(number) {
+    const mythTab = document.querySelector(`.myth-tab:nth-child(${number})`);
+    const truthContent = mythTab.querySelector('.truth-content');
+    const arrow = mythTab.querySelector('.arrow');
+    const mythTitle = mythTab.querySelector('.myth-title');
+    
+    // Toggle current tab
+    if (truthContent.style.display === 'block') {
+        truthContent.style.display = 'none';
+        arrow.textContent = '▼';
+        mythTitle.style.textDecoration = 'none';
+    } else {
+        truthContent.style.display = 'block';
+        arrow.textContent = '▲';
+        mythTitle.style.textDecoration = 'line-through';
+    }
+}
+
+// Quote box animation
+function animateQuoteBox() {
+    const quoteLines = document.querySelectorAll('.quote-line');
+    let delay = 0;
+
+    quoteLines.forEach((line, index) => {
+        // First make the line visible
+        setTimeout(() => {
+            line.classList.add('visible');
+            // Then start the typing animation
+            line.style.width = '100%';
+        }, delay);
+        delay += 2000; // 2 seconds between each line
+    });
+}
+
+// Initialize quote box animation when the closing section is shown
+document.addEventListener('DOMContentLoaded', function() {
+    const closingSection = document.getElementById('closing');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateQuoteBox();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 }); // Lower threshold to trigger earlier
+
+    if (closingSection) {
+        observer.observe(closingSection);
+    }
 });
