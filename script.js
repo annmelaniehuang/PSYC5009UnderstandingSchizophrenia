@@ -52,6 +52,10 @@ function showSection(sectionId) {
     if (sectionId === 'conclusion') {
         showSubsection('summary');
     }
+    // If background section is selected, show history subsection by default
+    else if (sectionId === 'background') {
+        showSubsection('history');
+    }
 }
 
 function showSubsection(subsectionId) {
@@ -90,6 +94,33 @@ function showSubsection(subsectionId) {
 // Initialize the page by showing only the intro section
 document.addEventListener('DOMContentLoaded', function() {
     showSection('intro');
+
+    // Initialize collapsible info-blocks (only for myth busters)
+    document.querySelectorAll('.info-block').forEach(infoBlock => {
+        // Check if this is a myth buster info-block
+        if (infoBlock.querySelector('p')?.textContent.includes('Myth Busters')) {
+            infoBlock.classList.add('myth-buster');
+            
+            // Create toggle button if it doesn't exist
+            if (!infoBlock.querySelector('.info-toggle')) {
+                const button = document.createElement('button');
+                button.className = 'info-toggle';
+                button.innerHTML = '💣 Myth Busters ▶';
+                button.onclick = () => toggleInfoBlock(infoBlock);
+                
+                // Wrap content in a div
+                const content = document.createElement('div');
+                content.className = 'info-content';
+                while (infoBlock.childNodes.length > 0) {
+                    content.appendChild(infoBlock.childNodes[0]);
+                }
+                
+                // Add button and content back to info-block
+                infoBlock.appendChild(button);
+                infoBlock.appendChild(content);
+            }
+        }
+    });
 
     // Add click event listeners to main nav links
     document.querySelectorAll('.main-nav a').forEach(link => {
@@ -197,27 +228,39 @@ document.addEventListener('DOMContentLoaded', function() {
 function toggleTab(tabId) {
     const tabContent = document.getElementById(tabId);
     const button = tabContent.previousElementSibling;
+    const isMythTab = button.closest('.myth-tabs') !== null;
 
-    // Toggle the current tab
-    if (tabContent.style.display === 'block') {
-        // Close the tab
-        tabContent.style.display = 'none';
-        // Remove strikethrough from the button text
-        button.innerHTML = button.getAttribute('data-text');
-        // Remove check mark from Truth
-        const truthElement = tabContent.querySelector('p strong');
-        if (truthElement && truthElement.textContent.includes('Truth:')) {
-            truthElement.innerHTML = 'Truth:';
+    if (isMythTab) {
+        // For myth tabs in conclusion section
+        if (tabContent.style.display === 'block') {
+            // Close the tab
+            tabContent.style.display = 'none';
+            // Remove strikethrough from the button text
+            button.innerHTML = button.getAttribute('data-text');
+            // Remove check mark from Truth
+            const truthElement = tabContent.querySelector('p strong');
+            if (truthElement && truthElement.textContent.includes('Truth:')) {
+                truthElement.innerHTML = 'Truth:';
+            }
+        } else {
+            // Open the tab
+            tabContent.style.display = 'block';
+            // Add strikethrough to the button text
+            button.innerHTML = `<del>${button.getAttribute('data-text')}</del>`;
+            // Add green check mark to the Truth text
+            const truthElement = tabContent.querySelector('p strong');
+            if (truthElement && truthElement.textContent === 'Truth:') {
+                truthElement.innerHTML = '✅ Truth:';
+            }
         }
     } else {
-        // Open the tab
-        tabContent.style.display = 'block';
-        // Add strikethrough to the button text
-        button.innerHTML = `<del>${button.getAttribute('data-text')}</del>`;
-        // Add green check mark to the Truth text
-        const truthElement = tabContent.querySelector('p strong');
-        if (truthElement && truthElement.textContent === 'Truth:') {
-            truthElement.innerHTML = '✅ Truth:';
+        // For symptom tabs - simple toggle without strikethrough
+        if (tabContent.style.display === 'block') {
+            tabContent.style.display = 'none';
+            button.classList.remove('active');
+        } else {
+            tabContent.style.display = 'block';
+            button.classList.add('active');
         }
     }
 }
@@ -410,3 +453,16 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(closingSection);
     }
 });
+
+function toggleInfoBlock(infoBlock) {
+    const content = infoBlock.querySelector('.info-content');
+    const button = infoBlock.querySelector('.info-toggle');
+    
+    if (content.style.display === 'block') {
+        content.style.display = 'none';
+        button.innerHTML = '💣 Myth Busters ▶';
+    } else {
+        content.style.display = 'block';
+        button.innerHTML = '▼';
+    }
+}
